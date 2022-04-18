@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ChemicalElement } from './chemicalElement';
+import { ChemicalElement, Classification } from './chemicalElement';
 
 /**
  * A service for getting chemical elements.
@@ -11,32 +11,37 @@ export class ChemicalElementService {
 
   constructor() { }
 
-  // TO DO: Move elements list to a Json file.
   /**
    * A list of all known chemical elements.
    */
   elements: ChemicalElement[] = [
     {
       atomicNumber: 1,
-      name: 'Hydrogen',
+      name: 'hydrogen',
       symbol: 'H',
-      description: 'Hydrogen is the lightest element. At standard conditions hydrogen' +
+      description: 'Hydrogen is the lightest element. At standard conditions hydrogen ' +
                    'is a gas of diatomic molecules having the formula H2.',
+      classification: Classification.Nonmetal,
       atomicMass: 1.00784,
       density: 0.08988,
       meltingPoint: 13.99,
       boilingPoint: 20.271,
+      group: 1,
+      period: 1,
     },
     {
       atomicNumber: 2,
-      name: 'Helium',
+      name: 'helium',
       symbol: 'He',
       description: 'A colourless, odourless, tasteless, non-toxic, inert, monatomic gas' +
                    'and the first in the noble gas group in the periodic table.',
+      classification: Classification.Nonmetal,
       atomicMass: 4.002602,
       density: 0.1786,
       meltingPoint: 0.95,
       boilingPoint: 4.222,
+      group: 18,
+      period: 1,
     }
   ]
 
