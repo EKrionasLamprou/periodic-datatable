@@ -1,4 +1,5 @@
 import { ChemicalElement, Classification } from "./chemicalElement"
+import { Groups } from "./groups"
 
 export class Elements {
     /**
