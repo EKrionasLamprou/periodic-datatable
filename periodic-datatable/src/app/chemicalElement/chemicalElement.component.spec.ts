@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ChemicalElementComponent } from './chemicalElement.component';
+import { ChemicalElementComponent } from './chemicalElement.component'
 
 describe('ElementComponent', () => {
   let component: ChemicalElementComponent;
-  let fixture: ComponentFixture<ChemicalElementComponent>;
+  let fixture: ComponentFixture<ChemicalElementComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ChemicalElementComponent ]
     })
-    .compileComponents();
+    .compileComponents()
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ChemicalElementComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = fixture.componentInstance
+    fixture.detectChanges()
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeTruthy()
   });
 });
