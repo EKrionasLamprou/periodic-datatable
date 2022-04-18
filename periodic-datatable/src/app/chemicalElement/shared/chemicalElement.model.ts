@@ -1,5 +1,3 @@
-import { Group } from "./group"
-
 /** 
  *  Represents a classification of the chemical elements, based on their metallic properties.
  */

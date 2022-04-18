@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { ChemicalElementService } from './chemical-element.service'
-import { ChemicalElement } from './chemicalElement'
+import { ChemicalElement } from './shared/chemicalElement.model'
 
 @Component({
   selector: 'chemical-element[symbol]',

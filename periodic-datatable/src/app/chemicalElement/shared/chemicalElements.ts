@@ -1,7 +1,6 @@
-import { ChemicalElement, Classification } from "./chemicalElement"
-import { Groups } from "./groups"
+import { ChemicalElement, Classification } from "./chemicalElement.model"
 
-export class Elements {
+export class ChemicalElements {
     /**
     * A list of all known chemical elements.
     */
