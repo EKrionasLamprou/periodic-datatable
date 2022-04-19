@@ -16,8 +16,9 @@ export class ChemicalElementComponent{
 
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.symbol)
-    console.log(this.element)
-    console.log(123)
+    if (!this.element) {
+      throw new Error(`There's no element with symbol '${this.symbol}' in the universe.`);
+    }
   }
 
   element!: ChemicalElement

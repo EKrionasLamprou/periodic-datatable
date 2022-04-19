@@ -11,15 +11,15 @@ describe('ElementComponent', () => {
       declarations: [ ChemicalElementComponent ]
     })
     .compileComponents()
-  });
+  })
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ChemicalElementComponent);
     component = fixture.componentInstance
     fixture.detectChanges()
-  });
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy()
-  });
-});
+  })
+})

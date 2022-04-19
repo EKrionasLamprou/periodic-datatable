@@ -1,3 +1,4 @@
+import { Block } from "./block.model"
 import { Group } from "./group.model"
 import { Period } from "./period.model"
 
@@ -46,4 +47,6 @@ export interface ChemicalElement {
     group: Group
     /** The period in the periodic table this element belongs to. */
     period: Period
+    /** The block in the periodic table this element belongs to. */
+    block: Block
 }

@@ -3,6 +3,10 @@
         {
             "index": 1,
             "description": "The first period contains fewer elements than any other, with only two, hydrogen and helium. They therefore do not follow the octet rule, but rather a duplet rule. Chemically, helium behaves like a noble gas, and thus is taken to be part of the group 18 elements."
+        },
+        {
+            "index": 2,
+            "description": " Period 2 elements obey the octet rule in that they need eight electrons to complete their valence shell (lithium and beryllium obey duet rule, boron is electron deficient.), where at most eight electrons can be accommodated: two in the 2s orbital and six in the 2p subshell."
         }
     ]
 }

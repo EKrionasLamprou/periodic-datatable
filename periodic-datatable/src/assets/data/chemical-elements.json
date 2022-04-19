@@ -5,26 +5,56 @@
             "name": "hydrogen",
             "symbol": "H",
             "description": "Hydrogen is the lightest element. At standard conditions hydrogen is a gas of diatomic molecules having the formula H2.",
-            "classification": 1,
+            "classification": 0,
             "atomicMass": 1.00784,
             "density": 0.08988,
             "meltingPoint": 13.99,
             "boilingPoint": 20.271,
             "group": 1,
-            "period": 1
+            "period": 1,
+            "block": 1
         },
         {
             "atomicNumber": 2,
             "name": "helium",
             "symbol": "He",
             "description": "A colourless, odourless, tasteless, non-toxic, inert, monatomic gas and the first in the noble gas group in the periodic table.",
-            "classification": 1,
+            "classification": 0,
             "atomicMass": 4.002602,
             "density": 0.1786,
             "meltingPoint": 0.95,
             "boilingPoint": 4.222,
             "group": 18,
-            "period": 1
+            "period": 1,
+            "block": 1
+        },
+        {
+            "atomicNumber": 3,
+            "name": "lithium",
+            "symbol": "Li",
+            "description": "A soft, silvery-white alkali metal. Under standard conditions, it is the least dense metal and the least dense solid element.",
+            "classification": 2,
+            "atomicMass": 6.94,
+            "density": 0.534,
+            "meltingPoint": 453.69,
+            "boilingPoint": 1560,
+            "group": 1,
+            "period": 2,
+            "block": 1
+        },
+        {
+            "atomicNumber": 4,
+            "name": "beryllium",
+            "symbol": "Be",
+            "description": "A steel-gray, strong, lightweight and brittle alkaline earth metal. It is a divalent element that occurs naturally only in combination with other elements to form minerals.",
+            "classification": 2,
+            "atomicMass": 9.0122,
+            "density": 1.85,
+            "meltingPoint": 1560,
+            "boilingPoint": 2742,
+            "group": 2,
+            "period": 2,
+            "block": 1
         }
     ]
 }

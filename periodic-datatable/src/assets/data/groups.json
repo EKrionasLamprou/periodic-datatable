@@ -7,6 +7,12 @@
             "description": "Group 1 is composed of hydrogen (H) and the alkali metals. Elements of the group have one s-electron in the outer electron shell. Hydrogen is not considered to be an alkali metal as it is not a metal, though it is more analogous to them than any other group. This makes the group somewhat exceptional."
         },
         {
+            "index": 2,
+            "name": "beryllium family",
+            "trivialName": "alkaline earth metals",
+            "description": "The elements of this group have very similar properties: they are all shiny, silvery-white, somewhat reactive metals at standard temperature and pressure."
+        },
+        {
             "index": 18,
             "name": "helium family",
             "trivialName": "noble gases",
