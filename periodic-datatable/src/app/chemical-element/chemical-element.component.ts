@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core'
-import { ChemicalElementService } from './chemical-element.service'
-import { ChemicalElement } from './shared/chemicalElement.model'
+import { ChemicalElementService } from './shared/chemical-element.service'
+import { ChemicalElement } from './shared/chemical-element.model'
 
 @Component({
   selector: 'chemical-element[symbol]',
-  templateUrl: './chemicalElement.component.html',
-  styleUrls: ['./chemicalElement.component.sass'],
+  templateUrl: './chemical-element.component.html',
+  styleUrls: ['./chemical-element.component.sass'],
 })
-
 export class ChemicalElementComponent{
   @Input()
   symbol!: string

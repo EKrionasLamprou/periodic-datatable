@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ChemicalElementComponent } from './chemicalElement.component'
+import { ChemicalElementComponent } from './chemical-element.component'
 
 describe('ElementComponent', () => {
   let component: ChemicalElementComponent;

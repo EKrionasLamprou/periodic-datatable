@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core'
-import { ChemicalElement } from './shared/chemicalElement.model'
-import { ChemicalElements } from './shared/chemicalElements'
-import { Group } from './shared/group.model'
-import { Groups } from './shared/groups'
-import { Period } from './shared/period.model'
-import { Periods } from './shared/periods'
+import { ChemicalElement } from './chemical-element.model'
+import { ChemicalElements } from './chemical-elements'
+import { Group } from './group.model'
+import { Groups } from './groups'
+import { Period } from './period.model'
+import { Periods } from './periods'
 
 /**
  * A service for getting chemical elements.

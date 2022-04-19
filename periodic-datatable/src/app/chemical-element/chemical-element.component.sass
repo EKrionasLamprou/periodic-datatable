@@ -1,0 +1,31 @@
+$block-size: 7vw
+$block-colour: linear-gradient(to top, #B1CFEB 13%, #96BDC7 100%)
+$text-colour: #F7F7F7
+
+.element-block
+    display: flex
+    position: relative  
+    justify-content: center
+    width: $block-size
+    height: $block-size
+    color: $text-colour
+    background: $block-colour
+    border-radius: 3%
+    text-shadow: 0 0 10px $text-colour
+
+    .element-symbol
+        position: relative
+        vertical-align: middle
+        top: 25%
+        font-size: 3vw
+
+    .element-number
+        position: absolute
+        top: 1%
+        left: 3%
+        font-size: 1.7vw
+
+    .element-name
+        position: absolute
+        bottom: 2%
+        font-size: 1vw

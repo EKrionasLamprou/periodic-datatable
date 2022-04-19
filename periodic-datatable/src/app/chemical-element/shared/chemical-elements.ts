@@ -1,4 +1,4 @@
-import { ChemicalElement, Classification } from "./chemicalElement.model"
+import { ChemicalElement, Classification } from "./chemical-element.model"
 
 export class ChemicalElements {
     /**
