@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core'
-import { ChemicalElement } from './chemical-element.model'
-import { ChemicalElements } from './chemical-elements'
+import { ChemicalElement, Classification } from './chemical-element.model'
 import { Group } from './group.model'
-import { Groups } from './groups'
 import { Period } from './period.model'
-import { Periods } from './periods'
+import chemicalElementData from '../../../assets/data/chemical-elements.json'
+import groupData from '../../../assets/data/groups.json'
+import periodsData from '../../../assets/data/periods.json'
 
 /**
  * A service for getting chemical elements.
@@ -14,7 +14,15 @@ import { Periods } from './periods'
 })
 export class ChemicalElementService {
 
-  constructor() { }
+  constructor() {
+    this.groups = this.getGroups()
+    this.periods = this.getPeriods()
+    this.chemicalElements = this.getChemicalElements()
+  }
+
+  chemicalElements: ChemicalElement[]
+  groups: Group[]
+  periods: Period[]
 
   /**
    * Finds a chemical element by it's symbol.
@@ -22,7 +30,7 @@ export class ChemicalElementService {
    * @returns An object of ChemicalElement type corresponding to the given symbol.
    */
   public getElement = (symbol: string): ChemicalElement =>
-    ChemicalElements.list.find(element => element.symbol === symbol) as ChemicalElement
+    this.chemicalElements.find(element => element.symbol === symbol) as ChemicalElement
 
   /**
    * Finds a chemical element group by it's index.
@@ -30,7 +38,7 @@ export class ChemicalElementService {
    * @returns An object of Group type corresponding to the given index.
    */
   public getGroup = (index: number): Group =>
-    Groups.list.find(group => group.index === index) as Group
+    this.groups.find(group => group.index === index) as Group
 
   /**
    * Finds a chemical element period by it's index.
@@ -38,5 +46,27 @@ export class ChemicalElementService {
    * @returns An object of Period type corresponding to the given index.
    */
   public getPeriod = (index: number): Period =>
-    Periods.list.find(period => period.index === index) as Period
+    this.periods.find(period => period.index === index) as Period
+
+  private getChemicalElements = (): ChemicalElement[] =>
+    chemicalElementData.chemicalElements.map(
+      obj => <ChemicalElement>{
+        atomicNumber   : obj.atomicNumber,
+        name           : obj.name,
+        symbol         : obj.symbol,
+        description    : obj.description,
+        classification : obj.classification as Classification,
+        atomicMass     : obj.atomicMass,
+        density        : obj.density,
+        meltingPoint   : obj.meltingPoint,
+        boilingPoint   : obj.boilingPoint,
+        group          : this.getGroup(obj.group),
+        period         : this.getPeriod(obj.period), 
+      })
+
+  private getGroups = (): Group[] =>
+    groupData.groups.map(obj => <Group>obj)
+
+  private getPeriods = (): Period[] =>
+    periodsData.periods.map(obj => <Period>obj)
 }

@@ -16,6 +16,8 @@ export class ChemicalElementComponent{
 
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.symbol)
+    console.log(this.element)
+    console.log(123)
   }
 
   element!: ChemicalElement

@@ -1,3 +1,6 @@
+import { Group } from "./group.model"
+import { Period } from "./period.model"
+
 /** 
  *  Represents a classification of the chemical elements, based on their metallic properties.
  */
@@ -39,8 +42,8 @@ export interface ChemicalElement {
      * state from liquid to gas at standard pressure. */
     boilingPoint: number
 
-    /** The column in the periodic table this element belongs to. */
-    group: number
-    /** The row in the periodic table this element belongs to. */
-    period: number
+    /** The group in the periodic table this element belongs to. */
+    group: Group
+    /** The period in the periodic table this element belongs to. */
+    period: Period
 }
