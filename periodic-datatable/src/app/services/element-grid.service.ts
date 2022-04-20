@@ -60,8 +60,8 @@ export class ElementGridService {
        * the periodic table.
        */
       bottom: (): (ChemicalElement | null)[] => {
-        addEmptyCells(2); addElements(57, 13)  // Lanthanoids
-        addEmptyCells(2); addElements(89, 13)  // Actinoids
+        addEmptyCells(2); addElements(57, 14); addEmptyCells(2);   // Lanthanoids
+        addEmptyCells(2); addElements(89, 14); addEmptyCells(2);   // Actinoids
         return grid;
       }
     }
