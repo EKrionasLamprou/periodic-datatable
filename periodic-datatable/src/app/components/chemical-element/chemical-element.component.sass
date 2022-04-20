@@ -1,4 +1,6 @@
 $block-colour: linear-gradient(to top, #B1CFEB 13%, #96BDC7 100%)
+$block-colour-selected: linear-gradient(to top, #ecf0f4 13%, #96BDC7 100%)
+$block-colour-metal: linear-gradient(to top, #d3d9df 13%, #a5b7bb 100%)
 $text-colour: #F7F7F7
 
 .element-block
@@ -11,6 +13,9 @@ $text-colour: #F7F7F7
     background: $block-colour
     border-radius: 4%
     text-shadow: 0 0 10px $text-colour
+    
+    border: 2px solid transparent
+
 
     .element-symbol
         position: relative
@@ -28,3 +33,7 @@ $text-colour: #F7F7F7
         position: absolute
         bottom: 2%
         font-size: 0.6vw
+
+    &:hover
+        background: $block-colour-selected
+        border: 2px solid white
