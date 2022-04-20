@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core'
-import blockData from '../../../assets/data/blocks.json'
-import chemicalElementData from '../../../assets/data/chemical-elements.json'
-import groupData from '../../../assets/data/groups.json'
-import periodData from '../../../assets/data/periods.json'
-import { Block } from './block.model'
-import { ChemicalElement, Classification } from './chemical-element.model'
-import { Group } from './group.model'
-import { Period } from './period.model'
+import blockData from '../../assets/data/blocks.json'
+import chemicalElementData from '../../assets/data/chemical-elements.json'
+import groupData from '../../assets/data/groups.json'
+import periodData from '../../assets/data/periods.json'
+import { Block } from '../models/block.model'
+import { ChemicalElement, Classification } from '../models/chemical-element.model'
+import { Group } from '../models/group.model'
+import { Period } from '../models/period.model'
 
 /**
  * A service for getting chemical elements.

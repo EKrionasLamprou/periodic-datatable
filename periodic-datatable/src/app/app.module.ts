@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { ChemicalElementComponent } from './chemical-element/chemical-element.component'
+import { ChemicalElementComponent } from './components/chemical-element/chemical-element.component'
 
 @NgModule({
   declarations: [
