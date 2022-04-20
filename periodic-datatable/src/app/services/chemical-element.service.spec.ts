@@ -7,9 +7,9 @@ describe('ChemicalElementService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(ChemicalElementService)
-  });
+  })
 
   it('should be created', () => {
     expect(service).toBeTruthy()
-  });
-});
+  })
+})

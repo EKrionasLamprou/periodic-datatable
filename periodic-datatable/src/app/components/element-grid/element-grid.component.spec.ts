@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { ChemicalElementComponent } from './chemical-element.component'
+import { ElementGridComponent } from './element-grid.component'
 
-describe('ElementComponent', () => {
-  let component: ChemicalElementComponent;
-  let fixture: ComponentFixture<ChemicalElementComponent>
+describe('ElementGridComponent', () => {
+  let component: ElementGridComponent
+  let fixture: ComponentFixture<ElementGridComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChemicalElementComponent ]
+      declarations: [ ElementGridComponent ]
     })
     .compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChemicalElementComponent);
+    fixture = TestBed.createComponent(ElementGridComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

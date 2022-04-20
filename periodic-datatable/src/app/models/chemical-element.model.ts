@@ -1,19 +1,7 @@
+import { Classification } from "../enums/classification.enum"
 import { Block } from "./block.model"
 import { Group } from "./group.model"
 import { Period } from "./period.model"
-
-/** 
- *  Represents a classification of the chemical elements, based on their metallic properties.
- */
-export enum Classification {
-    /** A type of chemical element that generally lacks a predominance of metallic properties. */
-    Nonmetal,
-    /** A type of chemical element which has a preponderance of properties in between,
-     * or that are a mixture of, those of metals and nonmetals. */
-    Metaloid,
-    /** A type of chemical element that has a predominance of metallic properties. */
-    Metal,
-}
 
 /** 
  *  Represents a chemical element that describes its chemical properties and
