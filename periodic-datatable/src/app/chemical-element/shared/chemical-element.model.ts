@@ -37,11 +37,13 @@ export interface ChemicalElement {
     /** The mass per volume of the element. */
     density: number
     /** The temperature (in kelvin) at which the element changes
-     * state from solid to liquid at standard pressure. */
-    meltingPoint: number
+     * state from solid to liquid at standard pressure.
+     * Null if the melting point of the element is unknown. */
+    meltingPoint: number | null
     /** The temperature (in kelvin) at which the element changes
-     * state from liquid to gas at standard pressure. */
-    boilingPoint: number
+     * state from liquid to gas at standard pressure.
+     * Null if the boiling point of the element is unknown. */
+    boilingPoint: number | null
 
     /** The group in the periodic table this element belongs to. */
     group: Group

@@ -60,6 +60,9 @@ export class ChemicalElementService {
   public getBlock = (index: number): Block =>
     this.blocks.find(block => block.index === index) as Block
 
+  /**
+   * Maps the chemical-elements.json data into an array of ChemicalElement objects.
+   */
   private getChemicalElements = (): ChemicalElement[] =>
     chemicalElementData.chemicalElements.map(
       obj => <ChemicalElement>{
@@ -72,17 +75,26 @@ export class ChemicalElementService {
         density        : obj.density,
         meltingPoint   : obj.meltingPoint,
         boilingPoint   : obj.boilingPoint,
-        group          : this.getGroup(obj.group),
+        group          : obj.group ? this.getGroup(obj.group) : null,
         period         : this.getPeriod(obj.period),
         block          : this.getBlock(obj.block),
       })
 
+  /**
+   * Maps the groups.json data into an array of Group objects.
+   */
   private getGroups = (): Group[] =>
     groupData.groups.map(obj => <Group>obj)
 
+  /**
+   * Maps the periods.json data into an array of Period objects.
+   */
   private getPeriods = (): Period[] =>
     periodData.periods.map(obj => <Period>obj)
 
+  /**
+   * Maps the blocks.json data into an array of Block objects.
+   */
   private getBlocks = (): Block[] =>
     blockData.blocks.map(obj => <Block>obj)
 }
