@@ -4,6 +4,26 @@
             "index": 1,
             "name": "s-block",
             "description": "The s-block is on the left side of the conventional periodic table and is composed of elements from the first two columns plus one element in the rightmost column, the nonmetals hydrogen and helium and the alkali metals (in group 1) and alkaline earth metals (group 2). Their general valence configuration is ns1–2. Helium is an s-element, but nearly always finds its place to the far right in group 18, above the p-element neon. Each row of the table has two s-elements. The metals of the s-block (from the second period onwards) are mostly soft and have generally low melting and boiling points. Most impart colour to a flame. Chemically, all s-elements except helium are highly reactive. Metals of the s-block are highly electropositive and often form essentially ionic compounds with nonmetals, especially with the highly electronegative halogen nonmetals."
+        },
+        {
+            "index": 2,
+            "name": "p-block",
+            "description": "This block is the only one having all three types of elements: metals, nonmetals, and metalloids. The p-block elements are unified by the fact that their valence (outermost) electrons are in the p orbital."
+        },
+        {
+            "index": 3,
+            "name": "d-block",
+            "description": "The d-block elements are all metals and most have one or more chemically active d-orbital electrons. Because there is a relatively small difference in the energy of the different d-orbital electrons, the number of electrons participating in chemical bonding can vary. The d-block elements have a tendency to exhibit two or more oxidation states, differing by multiples of one."
+        },
+        {
+            "index": 4,
+            "name": "f-block",
+            "description": "The f-block elements come in two series, in periods 6 and 7. All are metals. The f-orbital electrons are less active in the chemistry of the period 6 f-block elements, although they do make some contribution:[4] these are rather similar to each other."
+        },
+        {
+            "index": 5,
+            "name": "g-block",
+            "description": "A g-block is predicted to begin in the vicinity of element 121. Though g-orbitals are not expected to start filling in the ground state until around element 124–126 (see extended periodic table), they are likely already low enough in energy to start participating chemically in element 121,[5] similar to the situation of the 4f and 5f orbitals."
         }
     ]
 }
