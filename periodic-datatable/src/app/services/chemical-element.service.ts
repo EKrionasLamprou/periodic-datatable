@@ -15,7 +15,6 @@ import { Period } from '../models/period.model'
   providedIn: 'root'
 })
 export class ChemicalElementService {
-
   constructor() {
     this.groups = this.getGroups()
     this.periods = this.getPeriods()
@@ -30,11 +29,11 @@ export class ChemicalElementService {
 
   /**
    * Finds a chemical element by it's symbol.
-   * @param symbol The symbol of the element (e.g. 'He' for Helium).
+   * @param index The atomic number of the element (e.g. 1 for Helium).
    * @returns An object of ChemicalElement type corresponding to the given symbol.
    */
-  public getElement = (symbol: string): ChemicalElement =>
-    this.chemicalElements.find(element => element.symbol === symbol) as ChemicalElement
+  public getElement = (index: number): ChemicalElement =>
+    this.chemicalElements.find(element => element.atomicNumber === index) as ChemicalElement
 
   /**
    * Finds a chemical element group by it's index.

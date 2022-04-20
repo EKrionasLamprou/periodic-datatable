@@ -9,15 +9,15 @@ import { ChemicalElement } from '../../models/chemical-element.model'
 })
 export class ChemicalElementComponent{
   @Input()
-  symbol!: string
+  atomicNumber!: number
 
   constructor(private chemicalElementService: ChemicalElementService) {
   }
 
   ngOnInit() {
-    this.element = this.chemicalElementService.getElement(this.symbol)
+    this.element = this.chemicalElementService.getElement(this.atomicNumber)
     if (!this.element) {
-      throw new Error(`There's no element with symbol '${this.symbol}' in the universe.`);
+      throw new Error(`There's no element atomic number '${this.atomicNumber}' in the universe.`);
     }
   }
 
