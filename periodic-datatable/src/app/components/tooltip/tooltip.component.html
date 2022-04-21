@@ -1,8 +1,13 @@
 <div class="container" *ngIf="element">
-    <div class="title">
-        {{element.name | titlecase}}
-    </div>
-    <div class="description">
-        {{element.description}}
+    <div class="text">
+        <div class="background-symbol">
+            {{element.symbol}}
+        </div>
+        <div class="title">
+            {{element.name | titlecase}}
+        </div>
+        <div class="description">
+            {{element.description}}
+        </div>
     </div>
 </div>
