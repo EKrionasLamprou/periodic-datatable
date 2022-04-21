@@ -1,16 +1,16 @@
-$block-colour: linear-gradient(to top, #B1CFEB 13%, #96BDC7 100%)
-$block-colour-selected: linear-gradient(to top, #ecf0f4 13%, #96BDC7 100%)
-$block-colour-metal: linear-gradient(to top, #d3d9df 13%, #a5b7bb 100%)
+$tile-colour: linear-gradient(to top, #B1CFEB 13%, #96BDC7 100%)
+$tile-colour-selected: linear-gradient(to top, #ecf0f4 13%, #96BDC7 100%)
+$tile-colour-metal: linear-gradient(to top, #d3d9df 13%, #a5b7bb 100%)
 $text-colour: #F7F7F7
 
-.element-block
+.element-tile
     display: flex
     position: relative  
     justify-content: center
     padding: 15%
     margin: 4%
     color: $text-colour
-    background: $block-colour
+    background: $tile-colour
     border: 2px solid transparent
     border-radius: 4%
     text-shadow: 0 0 10px $text-colour
@@ -34,5 +34,14 @@ $text-colour: #F7F7F7
         font-size: 0.6vw
 
     &:hover
-        background: $block-colour-selected
+        background: $tile-colour-selected
         border: 2px solid white
+
+.s-block
+    background: linear-gradient(to top, #ca2929 13%, #d84f34 100%)
+.p-block
+    background: linear-gradient(to top, #d2ce47 13%, #c8a848 100%)
+.d-block
+    background: linear-gradient(to top, #332aac 13%, #3b4ac0 100%)
+.f-block
+    background: linear-gradient(to top, #217b1d 13%, #3a7d1d 100%)

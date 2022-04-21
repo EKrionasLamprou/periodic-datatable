@@ -1,5 +1,8 @@
-<div class="element-block" (mouseenter)="select()" (mouseleave)="unselect()">
-    <span class="element-number">{{element.atomicNumber}}</span>
-    <span class="element-symbol">{{element.symbol}}</span>
-    <span class="element-name">{{element.name | titlecase}}</span>
+<div
+    class="element-tile {{isInBlockMode() ? element.block.name : ''}}"
+    (mouseenter)="select()"
+    (mouseleave)="unselect()">
+        <span class="element-number">{{element.atomicNumber}}</span>
+        <span class="element-symbol">{{element.symbol}}</span>
+        <span class="element-name">{{element.name | titlecase}}</span>
 </div>
