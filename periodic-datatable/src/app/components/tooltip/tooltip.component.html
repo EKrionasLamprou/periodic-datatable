@@ -1,3 +1,8 @@
-<div class="container">
-    <p>{{element?.description ?? null}}</p>
+<div class="container" *ngIf="element">
+    <div class="title">
+        {{element.name | titlecase}}
+    </div>
+    <div class="description">
+        {{element.description}}
+    </div>
 </div>
