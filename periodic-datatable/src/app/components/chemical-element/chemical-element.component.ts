@@ -48,4 +48,16 @@ export class ChemicalElementComponent{
    * @returns True if the selected mode is 'Blocks', false otherwise.
    */
   public isInBlockMode = (): boolean => this.modeService.getMode() === Mode.Blocks
+
+  public getElementTileClass = (): string => {
+    let tileClass = ''
+
+    if (this.isInBlockMode()) {
+      tileClass += ` ${this.element.block.name}`
+      if (this.elementSelector.selectedElement?.block === this.element.block) {
+        tileClass += ' selected-group'
+      }
+    }
+    return tileClass
+  }
 }

@@ -3,12 +3,15 @@ $tile-colour-selected: linear-gradient(to top, #ecf0f4 13%, #96BDC7 100%)
 $tile-colour-metal: linear-gradient(to top, #d3d9df 13%, #a5b7bb 100%)
 $text-colour: #F7F7F7
 
+.element-container
+    padding: 0.5%
+
 .element-tile
     display: flex
     position: relative  
     justify-content: center
     padding: 15%
-    margin: 4%
+    margin: 3%
     color: $text-colour
     background: $tile-colour
     border: 2px solid transparent
@@ -45,3 +48,6 @@ $text-colour: #F7F7F7
     background: linear-gradient(to top, #332aac 13%, #3b4ac0 100%)
 .f-block
     background: linear-gradient(to top, #217b1d 13%, #3a7d1d 100%)
+
+.selected-group
+    background: $tile-colour
