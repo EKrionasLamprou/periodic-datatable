@@ -4,7 +4,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { ChemicalElementComponent } from './components/chemical-element/chemical-element.component'
 import { ElementGridComponent } from './components/element-grid/element-grid.component'
-import { PeriodicTableComponent } from './components/periodic-table/periodic-table.component'
+import { PeriodicTableComponent } from './components/periodic-table/periodic-table.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component'
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { PeriodicTableComponent } from './components/periodic-table/periodic-tab
     ChemicalElementComponent,
     PeriodicTableComponent,
     ElementGridComponent,
+    TooltipComponent,
   ],
   imports: [
     BrowserModule,

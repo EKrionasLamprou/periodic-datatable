@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core'
+import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ChemicalElement } from '../../models/chemical-element.model'
 import { ChemicalElementService } from '../../services/chemical-element.service'
 
@@ -15,7 +16,9 @@ export class ChemicalElementComponent{
   @Input()
   atomicNumber!: number
 
-  constructor(private chemicalElementService: ChemicalElementService) {
+  constructor(
+    private chemicalElementService: ChemicalElementService,
+    private elementSelector: ElementSelector) {
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -26,4 +29,7 @@ export class ChemicalElementComponent{
 
   /** Represents a chemical element that describes its chemical properties and its place in the periodic table. */
   element!: ChemicalElement
+
+  public select = () => this.elementSelector.select(this.element.atomicNumber)
+  public unselect = () => this.elementSelector.select(null)
 }
