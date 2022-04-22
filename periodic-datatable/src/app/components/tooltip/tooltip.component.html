@@ -1,13 +1,13 @@
 <div class="container" *ngIf="element">
     <div class="background-symbol">
-        {{element.symbol}}
+        {{getBackgroundText()}}
     </div>
     <div class="text">
         <div class="title">
-            {{element.name | titlecase}}
+            {{getTitle() | titlecase}}
         </div>
         <div class="description">
-            {{element.description}}
+            {{getDescription()}}
         </div>
     </div>
 </div>
