@@ -12,4 +12,6 @@
     Periods,
     /** Radioactive chemical elements are highlighted. */
     Radioactive,
+    /** Chemical elements' state of matter are represented, depending on the temperature. */
+    State,
 }
