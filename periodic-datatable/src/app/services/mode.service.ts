@@ -27,6 +27,17 @@ export class ModeService extends Observable {
    */
   public setMode = (mode: number) => {
     this.mode = mode
+    this.setModeStyle()
     this.notifyObservers()
+  }
+
+  /**
+   * Sets the global style on mode change.
+   */
+  private setModeStyle = () => {
+    if (this.mode === Mode.Radioactive)
+      document.body.style.background = '#171517'
+    else
+      document.body.style.background = 'white'
   }
 }

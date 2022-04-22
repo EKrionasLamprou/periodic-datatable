@@ -2,6 +2,8 @@ $tile-colour: linear-gradient(to top, #B1CFEB 13%, #93b6bf 100%)
 $tile-colour-selected: linear-gradient(to top, #ecf0f4 13%, #96BDC7 100%)
 $tile-colour-metal: linear-gradient(to top, #d3d9df 13%, #a5b7bb 100%)
 $text-colour: #F7F7F7
+$radiation-true-colour: #25c8b0
+$radiation-false-colour: #979797
 
 .element-container
     padding: 0.5%
@@ -62,6 +64,22 @@ $text-colour: #F7F7F7
     background: #d6d1d8
 
 .radioactive-true
-    background: green
+    background: transparent
+    border: 2px solid $radiation-true-colour
+    box-shadow: 0 0 10px $radiation-true-colour
+    color: $radiation-true-colour
+    text-shadow: 0 0 10px $radiation-true-colour
+    &:hover
+        background: $radiation-true-colour
+        border: 2px solid $radiation-true-colour
+        box-shadow: 0 0 50px $radiation-true-colour
+        color: black
 .radioactive-false
-    background: black
+    background: transparent
+    color: $radiation-false-colour
+    text-shadow: none
+    &:hover
+        background: transparent
+        box-shadow: 0 0 10px $radiation-false-colour
+        border: 2px solid transparent
+        color: $radiation-false-colour
