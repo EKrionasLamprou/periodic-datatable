@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Mode } from 'src/app/enums/mode.enum'
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
-import { Observer } from 'src/app/models/observer.model'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
 
@@ -10,7 +9,7 @@ import { ModeService } from 'src/app/services/mode.service'
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.sass']
 })
-export class TooltipComponent implements OnInit, Observer {
+export class TooltipComponent implements OnInit {
   /**
    * Sets the type of the toolip component to match a given mode.
    * Can be set to 'elements', 'blocks', 'groups', or 'periods' so that the
@@ -27,13 +26,26 @@ export class TooltipComponent implements OnInit, Observer {
 
   ngOnInit(): void {
     this.setFunctions(this.type)
-    this.elementSelector.subscribe(this)
+    this.elementSelector.subscribe(this, this.updateElement)
   }
 
   /** Represents the selected element to be shown in the tooltip. */
   element: ChemicalElement | null = null
   
-  public handle = (value: ChemicalElement | null) => this.element = value
+  /**
+   * Called by observable on selected element change.
+   * */
+  private updateElement = (value: any): void => { this.element = value as ChemicalElement | null; }
+
+  /**
+   * Called by observable on mode change.
+   * */
+  private updateMode = (value: any): void => {
+    let mode: string = Mode[value].toString()
+    if (!['Groups', 'Periods', 'Blocks'].includes(mode))
+      mode = 'elements'
+    this.setFunctions(mode)
+  }
 
   /**
    * Returns the title of the tooltip.
@@ -61,10 +73,8 @@ export class TooltipComponent implements OnInit, Observer {
   private setFunctions = (type: string) => {
     switch (type.toLowerCase()) {
       case 'auto':
-        let mode: string = this.modeService.getMode().toString()
-        if (!['groups', 'periods', 'blocks'].includes(mode))
-          mode = 'elements'
-        this.setFunctions(mode)
+        this.modeService.subscribe(this, this.updateMode)
+        this.updateMode(this.modeService.getMode()) // initialize mode
         break
       case 'elements':
         this.getTitle = (): string => this.element!.name
