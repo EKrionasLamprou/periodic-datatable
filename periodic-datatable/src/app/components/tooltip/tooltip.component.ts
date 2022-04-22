@@ -52,15 +52,31 @@ export class TooltipComponent implements OnInit {
    */
   public getTitle!: () => string
 
-    /**
+  /**
    * Returns the description of the tooltip.
    */
   public getDescription!: () => string
 
-    /**
+  /**
    * Returns the background text of the tooltip.
    */
   public getBackgroundText!: () => string
+
+  /**
+   * Determines whether or not the tooltip has information to show for the
+   * selected element.
+   * @returns True if the tooltip has information to show, false otherwise.
+   */
+  public hasData = (): boolean => {
+    if (!this.element) return false
+
+    // False in group mode, if the element group is null.
+    if (this.modeService.getMode() === Mode.Groups &&
+        !this.element.group)
+        return false
+
+    return true
+  }
 
   /**
    * Sets the implementation of the function properties to match the given mode.
@@ -82,7 +98,15 @@ export class TooltipComponent implements OnInit {
         this.getBackgroundText = (): string => this.element!.symbol
         break
       case 'groups':
-        this.getTitle = (): string => this.element!.group?.name ?? ''
+        this.getTitle = (): string => {
+          if (this.element!.group) {
+            if (this.element?.group.trivialName) {
+              return this.element.group.trivialName
+            }
+            return this.element!.group.name
+          }
+          return ''
+        }
         this.getDescription = (): string => this.element!.group?.description ?? ''
         this.getBackgroundText = (): string => this.element!.group?.index.toString() ?? ''
         break

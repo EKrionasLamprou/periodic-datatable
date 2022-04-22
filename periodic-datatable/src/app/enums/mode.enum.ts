@@ -2,8 +2,8 @@
   * Represents the visual modes of the periodic table in this application.
   */
  export enum Mode {
-    /** All tiles have the same colour without any extra information. */
-    Normal,
+    /** Each element is represented by the same colour. */
+    Element,
     /** Each chemical element block is represented by a different colour. */
     Blocks,
     /** Chemical element groups are represented by vertical stripes */

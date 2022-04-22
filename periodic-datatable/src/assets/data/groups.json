@@ -3,7 +3,7 @@
         {
             "index": 1,
             "name": "lithium family",
-            "trivialName": "hydrogen and alkali metals",
+            "trivialName": "hydrogen & alkali metals",
             "description": "Group 1 is composed of hydrogen (H) and the alkali metals. Elements of the group have one s-electron in the outer electron shell. Hydrogen is not considered to be an alkali metal as it is not a metal, though it is more analogous to them than any other group. This makes the group somewhat exceptional."
         },
         {
@@ -99,7 +99,7 @@
         {
             "index": 17,
             "name": "oxygen family",
-            "trivialName": "chalcogens",
+            "trivialName": "halogens",
             "description": "The group of halogens is the only periodic table group that contains elements in three of the main states of matter at standard temperature and pressure. All of the halogens form acids when bonded to hydrogen. Most halogens are typically produced from minerals or salts. The middle halogens—chlorine, bromine, and iodine—are often used as disinfectants. Organobromides are the most important class of flame retardants, while elemental halogens are dangerous and can be toxic."
         },
         {

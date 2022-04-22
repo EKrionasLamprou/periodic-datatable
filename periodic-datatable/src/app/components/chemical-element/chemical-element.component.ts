@@ -52,11 +52,32 @@ export class ChemicalElementComponent{
   public getElementTileClass = (): string => {
     let tileClass = ''
 
-    if (this.isInBlockMode()) {
-      tileClass += ` ${this.element.block.name}`
-      if (this.elementSelector.selectedElement?.block === this.element.block) {
-        tileClass += ' selected-group'
-      }
+    switch (this.modeService.getMode()) {
+      case Mode.Blocks:
+        tileClass += ` ${this.element.block.name}`
+        if (this.elementSelector.selectedElement?.block === this.element.block) {
+          tileClass += ' selected-group'
+        }
+        break
+
+      case Mode.Groups:
+        if (this.element.group) {
+          tileClass += this.element.group.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
+          if (this.elementSelector.selectedElement?.group === this.element.group) {
+            tileClass += ' selected-group'
+          }
+        }
+        else {
+          tileClass += ' disabled'
+        }
+        break
+
+      case Mode.Periods:
+        tileClass += this.element.period.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
+        if (this.elementSelector.selectedElement?.period === this.element.period) {
+          tileClass += ' selected-group'
+        }
+        break
     }
     return tileClass
   }
