@@ -19,7 +19,8 @@ export interface ChemicalElement {
     description: string
     /** Represents a classification of the chemical elements, based on their metallic properties. */
     classification: Classification
-
+    /** True if the element is radioactive. */
+    isRadioactive: boolean
     /** The mass of the element's atom in dalton (u).*/
     atomicMass: number
     /** The mass per volume of the element. */
