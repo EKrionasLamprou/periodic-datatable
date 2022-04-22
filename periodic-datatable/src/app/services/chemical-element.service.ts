@@ -87,6 +87,7 @@ export class ChemicalElementService {
         symbol         : obj.symbol,
         description    : obj.description,
         classification : obj.classification as Classification,
+        isRadioactive  : obj.isRadioactive,
         atomicMass     : obj.atomicMass,
         density        : obj.density,
         meltingPoint   : obj.meltingPoint,

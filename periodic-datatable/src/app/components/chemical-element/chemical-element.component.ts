@@ -78,6 +78,10 @@ export class ChemicalElementComponent{
           tileClass += ' selected-group'
         }
         break
+
+      case Mode.Radioactive:
+        tileClass += this.element.isRadioactive ? ' radioactive-true' : ' radioactive-false'
+        break
     }
     return tileClass
   }

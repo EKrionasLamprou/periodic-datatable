@@ -10,4 +10,6 @@
     Groups,
     /** Chemical element periods are represented by horizontal stripes */
     Periods,
+    /** Radioactive chemical elements are highlighted. */
+    Radioactive,
 }
