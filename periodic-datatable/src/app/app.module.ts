@@ -7,7 +7,8 @@ import { ChemicalElementComponent } from './components/chemical-element/chemical
 import { ControlPanelComponent } from './components/control-panel/control-panel.component'
 import { ElementGridComponent } from './components/element-grid/element-grid.component'
 import { PeriodicTableComponent } from './components/periodic-table/periodic-table.component'
-import { TooltipComponent } from './components/tooltip/tooltip.component'
+import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { ThermostatComponent } from './components/thermostat/thermostat.component'
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TooltipComponent } from './components/tooltip/tooltip.component'
     ElementGridComponent,
     TooltipComponent,
     ControlPanelComponent,
+    ThermostatComponent,
   ],
   imports: [
     BrowserModule,

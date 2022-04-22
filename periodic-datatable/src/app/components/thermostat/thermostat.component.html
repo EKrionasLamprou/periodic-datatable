@@ -1,0 +1,11 @@
+<div class="container">
+    <input
+        #slider
+        class="temperature-slider"
+        type="range"
+        min="0"
+        max="7000"
+        value="273.15"
+        (input)="onTemperatureChange(slider.value)"
+    >
+</div>
