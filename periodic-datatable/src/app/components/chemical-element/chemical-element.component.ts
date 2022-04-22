@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core'
 import { Mode } from 'src/app/enums/mode.enum'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
+import { ThermostatService } from 'src/app/services/thermostat.service'
 import { ChemicalElement } from '../../models/chemical-element.model'
 import { ChemicalElementService } from '../../services/chemical-element.service'
 
@@ -21,7 +22,8 @@ export class ChemicalElementComponent{
   constructor(
     private chemicalElementService: ChemicalElementService,
     private elementSelector: ElementSelector,
-    private modeService: ModeService) {
+    private modeService: ModeService,
+    private thermostatService: ThermostatService) {
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -82,6 +84,15 @@ export class ChemicalElementComponent{
       case Mode.Radioactive:
         tileClass += this.element.isRadioactive ? ' radioactive-true' : ' radioactive-false'
         break
+      
+      case Mode.States:
+        const temperature = this.thermostatService.temperature
+        if (!this.element.meltingPoint || temperature < this.element.meltingPoint) 
+          tileClass += ' state-solid'
+        else if (!this.element.boilingPoint || temperature < this.element.boilingPoint)
+          tileClass += ' state-liquid'
+        else
+          tileClass += ' state-vapour'
     }
     return tileClass
   }
