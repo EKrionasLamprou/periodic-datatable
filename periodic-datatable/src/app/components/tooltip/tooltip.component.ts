@@ -82,9 +82,9 @@ export class TooltipComponent implements OnInit {
         this.getBackgroundText = (): string => this.element!.symbol
         break
       case 'groups':
-        this.getTitle = (): string => this.element!.group.name
-        this.getDescription = (): string => this.element!.group.description
-        this.getBackgroundText = (): string => this.element!.group.index.toString()
+        this.getTitle = (): string => this.element!.group?.name ?? ''
+        this.getDescription = (): string => this.element!.group?.description ?? ''
+        this.getBackgroundText = (): string => this.element!.group?.index.toString() ?? ''
         break
       case 'periods':
         this.getTitle = (): string => 'Period ' + this.element!.period.index.toString()

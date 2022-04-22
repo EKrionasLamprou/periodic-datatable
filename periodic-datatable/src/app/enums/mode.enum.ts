@@ -6,4 +6,8 @@
     Normal,
     /** Each chemical element block is represented by a different colour. */
     Blocks,
+    /** Chemical element groups are represented by vertical stripes */
+    Groups,
+    /** Chemical element periods are represented by horizontal stripes */
+    Periods,
 }
