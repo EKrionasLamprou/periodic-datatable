@@ -3,7 +3,7 @@
   */
  export enum Mode {
     /** Each element is represented by the same colour. */
-    Element,
+    Elements,
     /** Each chemical element block is represented by a different colour. */
     Blocks,
     /** Chemical element groups are represented by vertical stripes */

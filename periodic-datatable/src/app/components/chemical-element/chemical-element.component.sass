@@ -1,6 +1,24 @@
-$tile-colour: linear-gradient(to top, #B1CFEB 13%, #93b6bf 100%)
-$tile-colour-selected: linear-gradient(to top, #ecf0f4 13%, #96BDC7 100%)
+$font: 'Times New Roman', Times, serif
+    
 $text-colour: #F7F7F7
+$tile-colour: #5a6996
+$tile-colour-stripe: #96a2c7
+$tile-colour-selected: #ffffff
+$tile-colour-highlighted: #c3cce7
+
+$tile-colour-block-s: #a33d3d
+$tile-colour-block-p: #ceb95e
+$tile-colour-block-d: #384aae
+$tile-colour-block-f: #247921
+
+$tile-colour-state-solid: #825b71
+$tile-colour-state-liquid: #6f8db4
+$tile-colour-state-vapour: #6fb475
+
+$tile-colour-classification-nonmetal: linear-gradient(to top, #5e476b 13%, #c658e5 100%)
+$tile-colour-classification-metaloid: linear-gradient(to top, #a4a5d6 13%, #5e588c 100%)
+$tile-colour-classification-metal: linear-gradient(to top, #c1c6cb 13%, #606f72 100%)
+
 $radiation-true-colour: #25c8b0
 $radiation-false-colour: #979797
 
@@ -14,7 +32,7 @@ $radiation-false-colour: #979797
     padding: 15%
     margin: 3%
     color: $text-colour
-    font-family: 'Times New Roman', Times, serif
+    font-family: $font
     background: $tile-colour
     border: 2px solid transparent
     border-radius: 4%
@@ -40,41 +58,46 @@ $radiation-false-colour: #979797
 
     &:hover
         background: $tile-colour-selected
-        border: 2px solid white
+        color: $tile-colour
+        border: 2px solid $tile-colour
+        box-shadow: 0 0 150px $tile-colour-selected
 
 .s-block
-    background: #ca2929
+    background: $tile-colour-block-s
 .p-block
-    background: #c2bd3d
+    background: $tile-colour-block-p
 .d-block
-    background: #332aac
+    background: $tile-colour-block-d
 .f-block
-    background: #217b1d
+    background: $tile-colour-block-f
 
 .stripe-odd
-    background: #7f72a1
+    background: $tile-colour
 .stripe-even
-    background: #ae9fb7
+    background: $tile-colour-stripe
 
 .selected-group
-    background: $tile-colour
+    background: $tile-colour-highlighted
+    color: $tile-colour
+    border: 2px solid $tile-colour
+    box-shadow: 0 0 50px $tile-colour-selected
 
 .disabled
     background: #d6d1d8
 
 .state-solid
-    background: #8f7c7c
+    background: $tile-colour-state-solid
 .state-liquid
-    background: #6f8db4
+    background: $tile-colour-state-liquid
 .state-vapour
-    background: #6fb475
+    background: $tile-colour-state-vapour
 
 .classification-nonmetal
-    background: linear-gradient(to top, #5e476b 13%, #c658e5 100%)
+    background: $tile-colour-classification-nonmetal
 .classification-metaloid
-    background: linear-gradient(to top, #a4a5d6 13%, #5e588c 100%)
+    background: $tile-colour-classification-metaloid
 .classification-metal
-    background: linear-gradient(to top, #c1c6cb 13%, #606f72 100%)
+    background: $tile-colour-classification-metal
 
 .radioactive-true
     background: transparent
