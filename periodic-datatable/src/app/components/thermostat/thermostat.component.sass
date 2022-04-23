@@ -1,2 +1,31 @@
+$slider-width: 100%
+$slider-height: 25px
+$slider-colour: #b8b9c2
+    
+$thumb-width: 15px
+$thumb-height: 25px
+$thumb-colour: #363e45
+
+.container
+    &.hidden
+        visibility: hidden
+
+@mixin thumb()
+    -webkit-appearance: none
+    width: $thumb-width
+    height: $thumb-height
+    background: $thumb-colour
+    &:active::-moz-range-thumb
+        background: red
+
 .temperature-slider
-    width: 100%
+  -webkit-appearance: none
+  width: $slider-width
+  height: $slider-height
+  background: $slider-colour
+  cursor: pointer
+
+.temperature-slider::-webkit-slider-thumb
+    @include thumb
+.temperature-slider::-moz-range-thumb
+    @include thumb
