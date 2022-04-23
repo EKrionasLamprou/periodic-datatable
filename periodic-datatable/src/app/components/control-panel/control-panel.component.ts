@@ -14,7 +14,9 @@ export class ControlPanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onModeChange(mode: number) {
+  public onModeChange = (mode: number) =>
     this.modeService.setMode(mode)
-  }
+
+  public getClass = (mode: number): string =>
+    this.modeService.getMode() == mode ? 'selected' : ''
 }

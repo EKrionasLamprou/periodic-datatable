@@ -1,30 +1,9 @@
 <div class="container">
-    <span class="mode-button">
-        <label for="mode-0">Elements</label>
-        <input id="mode-0" type="radio" name="mode" (click)="onModeChange(0)" checked>
-    </span>
-    <span class="mode-button">
-        <label for="mode-1">Blocks</label>
-        <input id="mode-1" type="radio" name="mode" (click)="onModeChange(1)">
-    </span>
-    <span class="mode-button">
-        <label for="mode-2">Groups</label>
-        <input id="mode-2" type="radio" name="mode" (click)="onModeChange(2)">
-    </span>
-    <span class="mode-button">
-        <label for="mode-3">Periods</label>
-        <input id="mode-3" type="radio" name="mode" (click)="onModeChange(3)">
-    </span>
-    <span class="mode-button">
-        <label for="mode-4">Radiation</label>
-        <input id="mode-4" type="radio" name="mode" (click)="onModeChange(4)">
-    </span>
-    <span class="mode-button">
-        <label for="mode-5">State</label>
-        <input id="mode-5" type="radio" name="mode" (click)="onModeChange(5)">
-    </span>
-    <span class="mode-button">
-        <label for="mode-6">Classification</label>
-        <input id="mode-6" type="radio" name="mode" (click)="onModeChange(6)">
-    </span>
+    <input class="{{getClass(0)}}" type="button" name="mode" (click)="onModeChange(0)" value="Elements">
+    <input class="{{getClass(1)}}" type="button" name="mode" (click)="onModeChange(1)" value="Blocks">
+    <input class="{{getClass(2)}}" type="button" name="mode" (click)="onModeChange(2)" value="Groups">
+    <input class="{{getClass(3)}}" type="button" name="mode" (click)="onModeChange(3)" value="Periods">
+    <input class="{{getClass(4)}}" type="button" name="mode" (click)="onModeChange(4)" value="Radiation">
+    <input class="{{getClass(5)}}" type="button" name="mode" (click)="onModeChange(5)" value="State">
+    <input class="{{getClass(6)}}" type="button" name="mode" (click)="onModeChange(6)" value="Classification">
 </div>
