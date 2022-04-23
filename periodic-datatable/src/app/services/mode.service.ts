@@ -15,7 +15,7 @@ export class ModeService extends Observable {
   }
 
   /** Represents the current selected mode. Normal by default. */
-  private mode: Mode = Mode.Element
+  private mode: Mode = Mode.States
 
   /**
    * Gets the current {@linkcode Mode} of the periodic table.
