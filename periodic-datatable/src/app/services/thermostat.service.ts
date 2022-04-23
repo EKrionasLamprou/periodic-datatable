@@ -20,5 +20,5 @@ export class ThermostatService {
    * Returns the global temperature in Celsius.
    */
   public getTemperatureInCelsius = (): number =>
-    this.temperature - this.zeroCelsius
+    Math.floor(this.temperature - this.zeroCelsius)
 }

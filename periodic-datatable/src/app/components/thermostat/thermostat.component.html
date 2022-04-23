@@ -8,4 +8,7 @@
         value="273.15"
         (input)="onTemperatureChange(slider.value)"
     >
+    <span class="temperature-text">
+        {{getTemperatureText()}}
+    </span>
 </div>

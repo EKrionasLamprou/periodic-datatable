@@ -1,31 +1,37 @@
 $slider-width: 100%
-$slider-height: 25px
+$slider-height: 26px
 $slider-colour: #b8b9c2
     
 $thumb-width: 15px
-$thumb-height: 25px
+$thumb-height: 26px
 $thumb-colour: #363e45
-
-.container
-    &.hidden
-        visibility: hidden
 
 @mixin thumb()
     -webkit-appearance: none
     width: $thumb-width
     height: $thumb-height
     background: $thumb-colour
-    &:active::-moz-range-thumb
-        background: red
 
-.temperature-slider
-  -webkit-appearance: none
-  width: $slider-width
-  height: $slider-height
-  background: $slider-colour
-  cursor: pointer
-
-.temperature-slider::-webkit-slider-thumb
-    @include thumb
-.temperature-slider::-moz-range-thumb
-    @include thumb
+.container
+    display: flex
+    justify-content: center
+    &.hidden
+        visibility: hidden
+    .temperature-slider
+        -webkit-appearance: none
+        width: $slider-width
+        height: $slider-height
+        background: $slider-colour
+        cursor: pointer
+    .temperature-slider::-webkit-slider-thumb
+        @include thumb
+    .temperature-slider::-moz-range-thumb
+        @include thumb
+    
+    .temperature-text
+        position: absolute
+        width: 100%
+        font-size: 25px
+        font-family: Arial, Helvetica, sans-serif
+        text-align: center
+        pointer-events: none
