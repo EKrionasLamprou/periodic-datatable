@@ -14,4 +14,6 @@
     Radioactive,
     /** Chemical elements' state of matter are represented, depending on the temperature. */
     States,
+    /** Classification of the chemicals elements represented by different colours. */
+    Classification,
 }

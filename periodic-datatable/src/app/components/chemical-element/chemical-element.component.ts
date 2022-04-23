@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core'
+import { Classification } from 'src/app/enums/classification.enum'
 import { Mode } from 'src/app/enums/mode.enum'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
@@ -93,6 +94,14 @@ export class ChemicalElementComponent{
           tileClass += ' state-liquid'
         else
           tileClass += ' state-vapour'
+        break
+      
+      case Mode.Classification:
+        switch (this.element.classification) {
+          case Classification.Nonmetal: tileClass += ' classification-nonmetal'; break
+          case Classification.Metaloid: tileClass += ' classification-metaloid'; break
+          case Classification.Metal: tileClass += ' classification-metal'; break
+        }
     }
     return tileClass
   }
