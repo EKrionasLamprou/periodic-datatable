@@ -29,22 +29,22 @@ export class TooltipComponent implements OnInit {
     this.elementSelector.subscribe(this, this.updateElement)
   }
 
+
+  
+
   /** Represents the selected element to be shown in the tooltip. */
   element: ChemicalElement | null = null
-  
-  /**
-   * Called by observable on selected element change.
-   * */
-  private updateElement = (value: any): void => { this.element = value as ChemicalElement | null; }
 
-  /**
-   * Called by observable on mode change.
-   * */
-  private updateMode = (value: any): void => {
-    let mode: string = Mode[value].toString()
-    if (!['Groups', 'Periods', 'Blocks'].includes(mode))
-      mode = 'elements'
-    this.setFunctions(mode)
+
+  public getRadioactivityClass = (): string => {
+    const mode: Mode = this.modeService.getMode()
+    if (mode === Mode.Radioactive) {
+      if (this.element?.isRadioactive) {
+        return 'radioactive-true'
+      }
+      return 'radioactive-false'
+    }
+    return ''
   }
 
   /**
@@ -77,6 +77,21 @@ export class TooltipComponent implements OnInit {
 
     return true
   }
+
+  /**
+   * Called by observable on selected element change.
+   * */
+   private updateElement = (value: any): void => { this.element = value as ChemicalElement | null; }
+
+   /**
+    * Called by observable on mode change.
+    * */
+   private updateMode = (value: any): void => {
+     let mode: string = Mode[value].toString()
+     if (!['Groups', 'Periods', 'Blocks'].includes(mode))
+       mode = 'elements'
+     this.setFunctions(mode)
+   }
 
   /**
    * Sets the implementation of the function properties to match the given mode.
