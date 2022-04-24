@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import { Mode } from '../enums/mode.enum'
 import { Observable } from '../models/observable-pattern/observable.model'
 
@@ -35,9 +35,13 @@ export class ModeService extends Observable {
    * Sets the global style on mode change.
    */
   private setModeStyle = () => {
-    if (this.mode === Mode.Radioactive)
-      document.body.style.background = '#171517'
-    else
-      document.body.style.background = 'white'
+    if (this.mode === Mode.Radioactive) {
+      document.body.classList.remove('light')
+      document.body.classList.add('dark')
+    }
+    else {
+      document.body.classList.remove('dark')
+      document.body.classList.add('light')
+    }
   }
 }

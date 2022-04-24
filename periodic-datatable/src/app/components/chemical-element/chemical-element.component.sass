@@ -101,11 +101,14 @@ $radiation-false-colour: #979797
 
 .radioactive-true
     background: transparent
-    border: 2px solid $radiation-true-colour
-    box-shadow: 0 0 10px $radiation-true-colour
-    color: $radiation-true-colour
-    text-shadow: 0 0 10px $radiation-true-colour
+    border: 2px solid transparent
+    box-shadow: 0 0 10px transparent
+    color: $radiation-false-colour
+    text-shadow: 0 0 10px transparent
+    animation: 1s 1 radiation 1s
+    animation-fill-mode: forwards
     &:hover
+        animation-fill-mode: none
         background: $radiation-true-colour
         border: 2px solid $radiation-true-colour
         box-shadow: 0 0 120px $radiation-true-colour
@@ -119,3 +122,10 @@ $radiation-false-colour: #979797
         box-shadow: 0 0 10px $radiation-false-colour
         border: 2px solid transparent
         color: $radiation-false-colour
+
+@keyframes radiation
+    100%
+        border: 2px solid $radiation-true-colour
+        box-shadow: 0 0 10px $radiation-true-colour
+        color: $radiation-true-colour
+        text-shadow: 0 0 10px $radiation-true-colour
