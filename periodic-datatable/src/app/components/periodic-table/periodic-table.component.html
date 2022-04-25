@@ -1,6 +1,9 @@
 <div class="container">
     <app-control-panel></app-control-panel>
     <app-thermostat></app-thermostat>
-    <app-element-grid [grid]="'top'"></app-element-grid>
-    <app-element-grid [grid]="'bottom'"></app-element-grid>
+    <div class="table">
+        <app-legend></app-legend>
+        <app-element-grid [grid]="'top'"></app-element-grid>
+        <app-element-grid [grid]="'bottom'"></app-element-grid>
+    </div>
 </div>

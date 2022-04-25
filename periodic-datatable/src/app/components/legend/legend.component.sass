@@ -1,0 +1,52 @@
+@import ../../../styles/colours
+    
+$font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    
+.container
+    position: absolute
+    top: 0
+    left: -19%
+    width: 50%
+    height: 250px
+    pointer-events: none
+
+    .item
+        font-size: 30px
+        font-family: $font
+    
+ul
+  list-style: none
+  padding-left: 0
+
+li::before
+    content: 'o'
+    font-size: 40px
+
+.s-block::before
+    color: $tile-colour-block-s
+.p-block::before
+    color: $tile-colour-block-p
+.d-block::before
+    color: $tile-colour-block-d
+.f-block::before
+    color: $tile-colour-block-f
+
+.non-radioactive
+    color: $radiation-false-colour
+.radioactive
+    color: $radiation-true-colour
+    text-shadow: 0 0 10px $radiation-true-colour
+
+.solid::before
+    color: $tile-colour-state-solid
+.liquid::before
+    color: $tile-colour-state-liquid
+.vapour::before
+    color: $tile-colour-state-vapour
+
+.nonmetal::before
+    color: #c658e5
+.metaloid::before
+    color: #a4a5d6
+.metal::before
+    color: #c1c6cb

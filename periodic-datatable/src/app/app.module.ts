@@ -8,7 +8,8 @@ import { ControlPanelComponent } from './components/control-panel/control-panel.
 import { ElementGridComponent } from './components/element-grid/element-grid.component'
 import { PeriodicTableComponent } from './components/periodic-table/periodic-table.component'
 import { TooltipComponent } from './components/tooltip/tooltip.component';
-import { ThermostatComponent } from './components/thermostat/thermostat.component'
+import { ThermostatComponent } from './components/thermostat/thermostat.component';
+import { LegendComponent } from './components/legend/legend.component'
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ThermostatComponent } from './components/thermostat/thermostat.componen
     TooltipComponent,
     ControlPanelComponent,
     ThermostatComponent,
+    LegendComponent,
   ],
   imports: [
     BrowserModule,
