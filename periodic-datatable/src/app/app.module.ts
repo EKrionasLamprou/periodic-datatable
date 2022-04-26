@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { ChemicalElementComponent } from './components/chemical-element/chemical-element.component'
-import { ControlPanelComponent } from './components/control-panel/control-panel.component'
+import { NavigationBar } from './components/navigation-bar/navigation-bar.component'
 import { ElementGridComponent } from './components/element-grid/element-grid.component'
 import { PeriodicTableComponent } from './components/periodic-table/periodic-table.component'
 import { TooltipComponent } from './components/tooltip/tooltip.component';
@@ -18,7 +18,7 @@ import { LegendComponent } from './components/legend/legend.component'
     PeriodicTableComponent,
     ElementGridComponent,
     TooltipComponent,
-    ControlPanelComponent,
+    NavigationBar,
     ThermostatComponent,
     LegendComponent,
   ],
