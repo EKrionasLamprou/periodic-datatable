@@ -1,5 +1,5 @@
 @import ../../../styles/colours
-    
+
 $font: 'Times New Roman', Times, serif
 
 .element-container
@@ -55,7 +55,7 @@ $font: 'Times New Roman', Times, serif
 .stripe-even
     background: $tile-colour-stripe
 
-.selected-group
+.highlighted
     background: $tile-colour-highlighted
     color: $tile-colour
     border: 2px solid $tile-colour
@@ -84,7 +84,7 @@ $font: 'Times New Roman', Times, serif
     box-shadow: 0 0 10px transparent
     color: $radiation-false-colour
     text-shadow: 0 0 10px transparent
-    animation: 1s 1 radiation 1s
+    animation: 1s 1 open-radiation 1s
     animation-fill-mode: forwards
     &:hover
         animation-fill-mode: none
@@ -102,7 +102,7 @@ $font: 'Times New Roman', Times, serif
         border: 2px solid transparent
         color: $radiation-false-colour
 
-@keyframes radiation
+@keyframes open-radiation
     100%
         border: 2px solid $radiation-true-colour
         box-shadow: 0 0 10px $radiation-true-colour

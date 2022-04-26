@@ -3,7 +3,7 @@ import { Classification } from 'src/app/enums/classification.enum'
 import { Mode } from 'src/app/enums/mode.enum'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
-import { ThermostatService } from 'src/app/services/thermostat.service'
+import { TemperatureService } from 'src/app/services/temperature.service'
 import { ChemicalElement } from '../../models/chemical-element.model'
 import { ChemicalElementService } from '../../services/chemical-element.service'
 
@@ -24,7 +24,7 @@ export class ChemicalElementComponent{
     private chemicalElementService: ChemicalElementService,
     private elementSelector: ElementSelector,
     private modeService: ModeService,
-    private thermostatService: ThermostatService) {
+    private temperatureService: TemperatureService) {
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -52,57 +52,72 @@ export class ChemicalElementComponent{
    */
   public isInBlockMode = (): boolean => this.modeService.getMode() === Mode.Blocks
 
+  /**
+   * Gets the element tile html class, based on the current mode.
+   * @returns A string of the html class name.
+   */
   public getElementTileClass = (): string => {
-    let tileClass = ''
+
+    const getElementClass = (): string => ''
+
+    const getBlocksClass = (): string => {
+      let tileClass: string = ''
+      tileClass += `${this.element.block.name}`
+      if (this.elementSelector.selectedElement?.block === this.element.block) {
+        tileClass += ' highlighted'
+      }
+      return tileClass
+    }
+
+    const getGroupsClass = (): string => {
+      let tileClass: string = ''
+      if (this.element.group) {
+        tileClass += this.element.group.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
+        if (this.elementSelector.selectedElement?.group === this.element.group) {
+          tileClass += ' highlighted'
+        }
+      }
+      else {
+        tileClass += ' disabled'
+      }
+      return tileClass
+    }
+
+    const getPeriodsClass = (): string => {
+      let tileClass: string = ''
+      tileClass += this.element.period.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
+      if (this.elementSelector.selectedElement?.period === this.element.period) {
+        tileClass += ' highlighted'
+      }
+      return tileClass
+    }
+
+    const getRadioactiveClass = (): string =>
+      this.element.isRadioactive ? 'radioactive-true' : 'radioactive-false'
+
+    const getStateClass = (): string => {
+      const temperature = this.temperatureService.temperature
+      if (!this.element.meltingPoint || temperature < this.element.meltingPoint) {
+        return 'state-solid'
+      }     
+      if (!this.element.boilingPoint || temperature < this.element.boilingPoint) {
+        return 'state-liquid'
+      }
+      return 'state-vapour'
+    }
+
+    const getClassificationClass = (): string =>
+      'classification-' + Classification[this.element.classification].toString().toLowerCase()
 
     switch (this.modeService.getMode()) {
-      case Mode.Blocks:
-        tileClass += ` ${this.element.block.name}`
-        if (this.elementSelector.selectedElement?.block === this.element.block) {
-          tileClass += ' selected-group'
-        }
-        break
-
-      case Mode.Groups:
-        if (this.element.group) {
-          tileClass += this.element.group.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
-          if (this.elementSelector.selectedElement?.group === this.element.group) {
-            tileClass += ' selected-group'
-          }
-        }
-        else {
-          tileClass += ' disabled'
-        }
-        break
-
-      case Mode.Periods:
-        tileClass += this.element.period.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
-        if (this.elementSelector.selectedElement?.period === this.element.period) {
-          tileClass += ' selected-group'
-        }
-        break
-
-      case Mode.Radioactive:
-        tileClass += this.element.isRadioactive ? ' radioactive-true' : ' radioactive-false'
-        break
-      
-      case Mode.States:
-        const temperature = this.thermostatService.temperature
-        if (!this.element.meltingPoint || temperature < this.element.meltingPoint) 
-          tileClass += ' state-solid'
-        else if (!this.element.boilingPoint || temperature < this.element.boilingPoint)
-          tileClass += ' state-liquid'
-        else
-          tileClass += ' state-vapour'
-        break
-      
-      case Mode.Classification:
-        switch (this.element.classification) {
-          case Classification.Nonmetal: tileClass += ' classification-nonmetal'; break
-          case Classification.Metaloid: tileClass += ' classification-metaloid'; break
-          case Classification.Metal: tileClass += ' classification-metal'; break
-        }
+      case Mode.Elements: return getElementClass()
+      case Mode.Blocks: return getBlocksClass()
+      case Mode.Groups: return getGroupsClass()
+      case Mode.Periods: return getPeriodsClass()
+      case Mode.Radioactive: return getRadioactiveClass()
+      case Mode.States: return getStateClass()
+      case Mode.Classification: return getClassificationClass()
+      default: throw new Error('Invalid mode.')
     }
-    return tileClass
   }
 }
