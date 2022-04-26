@@ -22,7 +22,7 @@ export class ThermostatComponent implements OnInit {
    * Sets the value of the global temperature.
    * @param value The new temperature value.
    */
-  public onTemperatureChange = (value: string) =>
+  public setTemperature = (value: string) =>
     this.temperatureService.temperature = parseFloat(value)
 
   /**
@@ -30,7 +30,8 @@ export class ThermostatComponent implements OnInit {
    * @returns A string of the following format: {temperature in Kelvin}K ({temperature in Celsius}°C)
    */
   public getTemperatureText = (): string =>
-    `${this.temperatureService.temperature}K (${this.temperatureService.getTemperatureInCelsius()}°C)`
+    `${this.temperatureService.temperature}K ` +
+    `(${this.temperatureService.getTemperatureInCelsius()}°C)`
 
   /**
    * Returns true if the current mode is 'States', otherwise false.

@@ -6,7 +6,7 @@
         min="0"
         max="7000"
         value="273.15"
-        (input)="onTemperatureChange(slider.value)"
+        (input)="setTemperature(slider.value)"
     >
     <span class="temperature-text">
         {{getTemperatureText()}}

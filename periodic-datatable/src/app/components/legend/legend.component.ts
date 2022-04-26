@@ -1,8 +1,10 @@
 import { Component } from '@angular/core'
 import { Mode } from 'src/app/enums/mode.enum'
-import { LegendItem } from 'src/app/models/legend-item.model'
 import { ModeService } from 'src/app/services/mode.service'
 
+/**
+ * Represents a visual explanation of the colours that are used to describe the elements.
+ */
 @Component({
   selector: 'app-legend',
   templateUrl: './legend.component.html',
@@ -15,10 +17,19 @@ export class LegendComponent {
     modeService.subscribe(this, () => this.items = this.getItems())
   }
 
+  /** The names of the features that are present in this legend. */
   items!: string[]
 
+  /**
+   * Returns true if this legend has any features.
+   * @returns True if the map has items, false otherwise.
+   */
   public hasContent = (): boolean => this.items.length > 0
 
+  /**
+   * Gets the items of this legend, based on the current mode.
+   * @returns A string array of the items' names.
+   */
   private getItems = (): string[] => {
     const mode: Mode = this.modeService.getMode()
     switch (mode) {

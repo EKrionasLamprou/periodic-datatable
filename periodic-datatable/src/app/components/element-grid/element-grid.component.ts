@@ -22,6 +22,7 @@ export class ElementGridComponent implements OnInit {
     this.elements = this.getGridElements()
   }
 
+  /** The chemical elements that belong to this grid. */
   elements!: (ChemicalElement | null)[]
 
   /**

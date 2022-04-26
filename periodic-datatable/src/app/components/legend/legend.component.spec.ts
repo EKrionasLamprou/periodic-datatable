@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LegendComponent } from './legend.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { LegendComponent } from './legend.component'
 
 describe('LegendComponent', () => {
-  let component: LegendComponent;
-  let fixture: ComponentFixture<LegendComponent>;
+  let component: LegendComponent
+  let fixture: ComponentFixture<LegendComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LegendComponent ]
     })
-    .compileComponents();
-  });
+    .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LegendComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(LegendComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
