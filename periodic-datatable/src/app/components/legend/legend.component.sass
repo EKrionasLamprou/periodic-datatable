@@ -1,20 +1,17 @@
 @import ../../../styles/colours
-    
-$font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-    
-@mixin container($top)
-    .container
-        position: absolute
-        top: $top
-        left: -19%
-        width: 50%
-        height: 250px
-        pointer-events: none
 
-        .item
-            font-size: 30px
-            font-family: $font
-    
+$font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+.container
+    position: absolute
+    bottom: 1%
+    right: 1%
+    pointer-events: none
+
+    .item
+        font-size: 30px
+        font-family: $font
+
 ul
   list-style: none
   padding-left: 0
@@ -51,8 +48,3 @@ li::before
     color: #a4a5d6
 .metal::before
     color: #c1c6cb
-
-@media (min-width: 1200px)
-    @include container($top: 0)
-@media (max-width: 1200px)
-    @include container($top: 90%)

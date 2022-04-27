@@ -9,7 +9,8 @@ import { ElementGridComponent } from './components/element-grid/element-grid.com
 import { PeriodicTableComponent } from './components/periodic-table/periodic-table.component'
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { ThermostatComponent } from './components/thermostat/thermostat.component';
-import { LegendComponent } from './components/legend/legend.component'
+import { LegendComponent } from './components/legend/legend.component';
+import { HeaderComponent } from './components/header/header.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LegendComponent } from './components/legend/legend.component'
     NavigationBar,
     ThermostatComponent,
     LegendComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
