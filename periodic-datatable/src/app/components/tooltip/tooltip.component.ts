@@ -29,12 +29,8 @@ export class TooltipComponent implements OnInit {
     this.elementSelector.subscribe(this, this.updateElement)
   }
 
-
-  
-
   /** Represents the selected element to be shown in the tooltip. */
   element: ChemicalElement | null = null
-
 
   public getRadioactivityClass = (): string => {
     const mode: Mode = this.modeService.getMode()
@@ -102,7 +98,7 @@ export class TooltipComponent implements OnInit {
    * to match the current mode.
    */
   private setFunctions = (type: string) => {
-    switch (type.toLowerCase()) {
+    switch (type?.toLowerCase()) {
       case 'auto':
         this.modeService.subscribe(this, this.updateMode)
         this.updateMode(this.modeService.getMode()) // initialize mode
