@@ -15,6 +15,7 @@ describe('ElementGridComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ElementGridComponent)
     component = fixture.componentInstance
+    component.grid = 'top'
     fixture.detectChanges()
   })
 

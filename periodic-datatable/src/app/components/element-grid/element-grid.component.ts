@@ -31,7 +31,7 @@ export class ElementGridComponent implements OnInit {
    * periodic table.
    */
   private getGridElements(): (ChemicalElement | null)[] {
-    switch (this.grid.toLowerCase()) {
+    switch (this.grid?.toLowerCase()) {
       case 'top':
         return this.elementGridService.getGrid().top()
       case 'bottom':

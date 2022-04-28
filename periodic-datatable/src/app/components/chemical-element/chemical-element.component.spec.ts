@@ -15,6 +15,7 @@ describe('ElementComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ChemicalElementComponent);
     component = fixture.componentInstance
+    component.atomicNumber = 1
     fixture.detectChanges()
   })
 

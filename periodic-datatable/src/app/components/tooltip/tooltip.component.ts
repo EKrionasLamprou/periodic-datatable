@@ -5,7 +5,7 @@ import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
 
 @Component({
-  selector: 'app-tooltip[type]',
+  selector: 'app-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.sass']
 })
@@ -18,7 +18,7 @@ export class TooltipComponent implements OnInit {
    * to match the current mode.
    */
   @Input()
-  type!: string
+  type: string = 'auto'
 
   constructor(
     private elementSelector: ElementSelector,
