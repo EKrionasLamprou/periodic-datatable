@@ -22,7 +22,7 @@ export class NavigationBar {
     this.modeService.setMode(mode)
 
   /**
-   * Gets the html class of each input and determins wheter or not it is selected.
+   * Gets the html class of each input and determines wheter or not it is selected.
    */
   public getInputClass = (mode: number): string =>
     this.modeService.getMode() == mode ? 'selected' : ''

@@ -22,19 +22,22 @@ export class ThermostatComponent implements OnInit {
    * Sets the value of the global temperature.
    * @param value The new temperature value.
    */
-  public setTemperature = (value: string) =>
-    this.temperatureService.temperature = parseFloat(value)
+  public setTemperature = (value: string) => {
+    const temperature = parseFloat(value)
+    this.temperatureService.setTemperature(temperature)
+  }
 
   /**
    * Gets the temparature text, based on the global temperature.
    * @returns A string of the following format: {temperature in Kelvin}K ({temperature in Celsius}°C)
    */
   public getTemperatureText = (): string =>
-    `${this.temperatureService.temperature}K ` +
+    `${this.temperatureService.getTemperature()}K ` +
     `(${this.temperatureService.getTemperatureInCelsius()}°C)`
 
   /**
    * Returns true if the current mode is 'States', otherwise false.
+   * This element should be hidden in other modes.
    */
   public getVisibilityClass = (): string =>
     this.modeService.getMode() === Mode.States ? '' : 'hidden'

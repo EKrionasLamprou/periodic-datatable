@@ -31,13 +31,22 @@ export class ElementGridComponent implements OnInit {
    * periodic table.
    */
   private getGridElements(): (ChemicalElement | null)[] {
+    if (!this.grid) throw this.invalidGridTypeError(this.grid);
+    
     switch (this.grid?.toLowerCase()) {
       case 'top':
         return this.elementGridService.getGrid().top()
       case 'bottom':
         return this.elementGridService.getGrid().bottom()
       default:
-        throw new Error("Invalid grid type. Can only be 'top' or 'bottom'.");
+        throw this.invalidGridTypeError(this.grid);
     }
   }
+
+ /**
+ * Returns an Error that describes invalid grid type input.
+ * @returns An {@linkcode Error} object.
+ */
+  private invalidGridTypeError = (input: string) => new Error(
+    `Invalid grid type '${input}'. Can only be 'top' or 'bottom'.`);
 }

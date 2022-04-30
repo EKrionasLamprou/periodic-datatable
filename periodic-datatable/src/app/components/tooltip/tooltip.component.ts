@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 import { Mode } from 'src/app/enums/mode.enum'
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
 import { ElementSelector } from 'src/app/services/element-selector.service'
@@ -22,8 +22,8 @@ export class TooltipComponent implements OnInit {
 
   constructor(
     private elementSelector: ElementSelector,
-    private modeService: ModeService) { }
-
+    private modeService: ModeService) {
+  }
   ngOnInit(): void {
     this.setFunctions(this.type)
     this.elementSelector.subscribe(this, this.updateElement)
@@ -32,6 +32,11 @@ export class TooltipComponent implements OnInit {
   /** Represents the selected element to be shown in the tooltip. */
   element: ChemicalElement | null = null
 
+  /**
+   * Returns the html class, based on the mode and the radioactivity of the
+   * selected element.
+   * @returns A string on the html class name.
+   */
   public getRadioactivityClass = (): string => {
     const mode: Mode = this.modeService.getMode()
     if (mode === Mode.Radioactive) {
@@ -68,8 +73,8 @@ export class TooltipComponent implements OnInit {
 
     // False in group mode, if the element group is null.
     if (this.modeService.getMode() === Mode.Groups &&
-        !this.element.group)
-        return false
+      !this.element.group)
+      return false
 
     return true
   }
@@ -77,17 +82,19 @@ export class TooltipComponent implements OnInit {
   /**
    * Called by observable on selected element change.
    * */
-   private updateElement = (value: any): void => { this.element = value as ChemicalElement | null; }
+  private updateElement = (value: any): void => {
+    this.element = value as ChemicalElement | null
+  }
 
-   /**
-    * Called by observable on mode change.
-    * */
-   private updateMode = (value: any): void => {
-     let mode: string = Mode[value].toString()
-     if (!['Groups', 'Periods', 'Blocks'].includes(mode))
-       mode = 'elements'
-     this.setFunctions(mode)
-   }
+  /**
+   * Called by observable on mode change.
+   * */
+  private updateMode = (value: any): void => {
+    let mode: string = Mode[value].toString()
+    if (!['Groups', 'Periods', 'Blocks'].includes(mode))
+      mode = 'elements'
+    this.setFunctions(mode)
+  }
 
   /**
    * Sets the implementation of the function properties to match the given mode.
@@ -133,7 +140,7 @@ export class TooltipComponent implements OnInit {
         break
       default:
         throw new Error('Invalid tooptip type input.' +
-          'Must be: type="auto|elements|groups|periods|blocks".');
+          'Must be: type="auto|elements|groups|periods|blocks".')
     }
   }
 }

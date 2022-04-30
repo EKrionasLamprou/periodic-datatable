@@ -29,12 +29,12 @@ export class ChemicalElementComponent{
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
     if (!this.element) {
-      throw new Error(`There's no element atomic number '${this.atomicNumber}' in the universe.`)
+      throw this.invalidAtomicNumberError()
     }
   }
 
   /** Represents a chemical element that describes its chemical properties and its place in the periodic table. */
-  element!: ChemicalElement
+  public element!: ChemicalElement
 
   /**
    * Sets this element as selected.
@@ -96,7 +96,7 @@ export class ChemicalElementComponent{
       this.element.isRadioactive ? 'radioactive-true' : 'radioactive-false'
 
     const getStateClass = (): string => {
-      const temperature = this.temperatureService.temperature
+      const temperature = this.temperatureService.getTemperature()
       if (!this.element.meltingPoint || temperature < this.element.meltingPoint) {
         return 'state-solid'
       }     
@@ -120,4 +120,11 @@ export class ChemicalElementComponent{
       default: throw new Error('Invalid mode.')
     }
   }
+
+  /**
+   * Returns an Error that describes invalid atomic number input.
+   * @returns An {@linkcode Error} object.
+   */
+  private invalidAtomicNumberError = () => new Error(
+    `There's no known element with atomic number '${this.atomicNumber}' in the universe.`)
 }

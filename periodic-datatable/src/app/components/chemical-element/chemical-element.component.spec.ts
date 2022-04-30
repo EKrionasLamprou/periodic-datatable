@@ -5,6 +5,13 @@ describe('ElementComponent', () => {
   let component: ChemicalElementComponent;
   let fixture: ComponentFixture<ChemicalElementComponent>
 
+  const createComponent = (atomicNumber: number) => {
+    fixture = TestBed.createComponent(ChemicalElementComponent)
+    component = fixture.componentInstance
+    component.atomicNumber = atomicNumber
+    fixture.detectChanges()
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ChemicalElementComponent ]
@@ -12,14 +19,19 @@ describe('ElementComponent', () => {
     .compileComponents()
   })
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ChemicalElementComponent);
-    component = fixture.componentInstance
-    component.atomicNumber = 1
-    fixture.detectChanges()
+  it('should create if atomic number is valid', () => {
+    const maxAtomicNumber = 118
+    for (let i = 1; i <= maxAtomicNumber; i++) {
+      createComponent(i)
+      expect(component).toBeTruthy()
+    }
   })
 
-  it('should create', () => {
-    expect(component).toBeTruthy()
+  it('should throw error if atomic number is invalid', () => {
+    const invalidAtomicNumbers: any[] = [undefined, true, 'error', NaN, Infinity, -10, 0, 119, 1000]
+    for (const number of invalidAtomicNumbers) {
+      const message = `There's no known element with atomic number '${number}' in the universe.`
+      expect(() => createComponent(number)).toThrowError(message)
+    }
   })
 })
