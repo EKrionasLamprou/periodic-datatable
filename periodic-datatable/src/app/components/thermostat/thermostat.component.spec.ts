@@ -36,7 +36,12 @@ describe('ThermostatComponent', () => {
   })
   
   it('should throw error on invalid temperature input', () => {
-    const invalidInputs = ['', 'invalid', '5001']
+    const invalidInputs = [
+      '',
+      'invalid',
+      (temperatureService.minTemperature - 1).toString(),
+      (temperatureService.maxTemperature + 1).toString(),
+    ]
     for (const input of invalidInputs) {
       expect(() => component.setTemperature(input)).toThrowError()
     }
@@ -54,5 +59,10 @@ describe('ThermostatComponent', () => {
     expect(component.getVisibilityClass()).toEqual('')
     modeService.setMode(Mode.Elements)
     expect(component.getVisibilityClass()).toEqual('hidden')
+  })
+
+  it('should get max and min temperature', () => {
+    expect(component.minTemperature).toEqual(temperatureService.minTemperature)
+    expect(component.maxTemperature).toEqual(temperatureService.maxTemperature)
   })
 })
