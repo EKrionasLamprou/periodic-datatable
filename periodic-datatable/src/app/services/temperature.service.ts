@@ -12,9 +12,9 @@ export class TemperatureService {
   }
 
   /** The minumum temperature allowed in Kelvin. */
-  private readonly minTemperature = 0
+  public readonly minTemperature = 0
   /** The maximum temperature allowed within the program in Kelvin. */
-  private readonly maxTemperature = 5000
+  public readonly maxTemperature = 6000
   /** 0°C in Kelvin constant */
   private readonly zeroCelsius = 273.15
   /** The global temperature in Kelvin. */

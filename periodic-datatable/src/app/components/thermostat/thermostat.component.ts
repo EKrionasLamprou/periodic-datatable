@@ -13,10 +13,17 @@ export class ThermostatComponent implements OnInit {
   constructor(
     private temperatureService: TemperatureService,
     private modeService: ModeService) {
+    this.minTemperature = temperatureService.minTemperature
+    this.maxTemperature = temperatureService.maxTemperature
   }
 
   ngOnInit(): void {
   }
+
+  /** The minumum temperature allowed in Kelvin. */
+  public readonly minTemperature: number
+  /** The maximum temperature allowed within the program in Kelvin. */
+  public readonly maxTemperature: number
 
   /**
    * Sets the value of the global temperature.
