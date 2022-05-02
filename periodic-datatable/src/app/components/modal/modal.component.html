@@ -1,9 +1,16 @@
 <div class="container" *ngIf="isVisible">
     <div class="background" (click)="close()"></div>
     <article class="modal">
-        <h2 class="title"     > {{this.info?.getTitle() | titlecase}}    </h2>
-        <h3 class="subtitle"  > {{this.info?.getSubTitle() | titlecase}} </h3>
-        <p class="description"> {{this.info?.getDescription()}}          </p>
+        <h2 class="title"> {{this.info?.getTitle() | titlecase}} </h2>
+        <h3 class="subtitle"> {{this.info?.getSubTitle() | titlecase}} </h3>
+        <div class="details">
+            <span *ngFor="let detail of this.info?.getDetails()">
+                <span class="detail-name">{{detail[0]}}: </span>
+                <span class="detail-value">{{detail[1] | titlecase}}</span>
+                <br>
+            </span>
+        </div>
+        <p class="description"> {{this.info?.getDescription()}} </p>
         <button class="close-btn" (click)="close()">X</button>
     </article>
 </div>

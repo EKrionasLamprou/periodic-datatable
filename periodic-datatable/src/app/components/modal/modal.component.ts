@@ -1,7 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core'
-import { Information } from 'src/app/models/information.model'
+import { ModalInformation } from 'src/app/models/modal-information.model'
 import { ModalService } from 'src/app/services/modal.service'
 
+/**
+ * Represents a modal that shows chemical element information.
+ */
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -16,13 +19,23 @@ export class ModalComponent implements OnInit {
     this.modalService.connectComponent(this)
   }
 
+  /** Determines wheter or not this modal should render. */
   public isVisible = false
-  public info!: Information | null
+  /** The information that will appear on the modal. */
+  public info!: ModalInformation | null
 
-  public close = () => this.isVisible = false
+  /**
+   * Hides the modal.
+   */
+  public close = (): void => {
+    this.isVisible = false
+  }
 
+  /**
+   * Closes the modal on 'Escape' key press.
+   */
   @HostListener('document:keyup', ['$event'])
-  handleDeleteKeyboardEvent = (event: KeyboardEvent): void => {
+  handleCloseKeyEvent = (event: KeyboardEvent): void => {
     if(event.key === 'Escape')
     {
       this.close()
