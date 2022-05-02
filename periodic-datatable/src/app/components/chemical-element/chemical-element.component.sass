@@ -7,7 +7,7 @@ $font: 'Times New Roman', Times, serif
 
 .element-tile
     display: flex
-    position: relative  
+    position: relative
     justify-content: center
     padding: 15%
     margin: 3%
@@ -33,7 +33,7 @@ $font: 'Times New Roman', Times, serif
     .element-name
         position: absolute
         bottom: 2%
-        font-size: 0.6vw
+        font-size: 0.55vw
 
     &:hover
         background: $tile-colour-selected
@@ -86,12 +86,14 @@ $font: 'Times New Roman', Times, serif
     text-shadow: 0 0 10px transparent
     animation: 1s 1 open-radiation 1s
     animation-fill-mode: forwards
+
     &:hover
         animation-fill-mode: none
         background: $radiation-true-colour
         border: 2px solid $radiation-true-colour
         box-shadow: 0 0 120px $radiation-true-colour
         color: black
+
 .radioactive-false
     background: transparent
     color: $radiation-false-colour

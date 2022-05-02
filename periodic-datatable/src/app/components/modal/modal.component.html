@@ -11,6 +11,15 @@
             </span>
         </div>
         <p class="description"> {{this.info?.getDescription()}} </p>
+        <div
+            *ngIf="this.hasImage"
+            class="image"
+        >
+            <img
+                src="{{this.info?.getImageUrl()}}"
+                (error)="this.hasImage = false"
+            >
+        </div>
         <button class="close-btn" (click)="close()">X</button>
     </article>
 </div>

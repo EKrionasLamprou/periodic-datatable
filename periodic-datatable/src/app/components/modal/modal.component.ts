@@ -24,6 +24,18 @@ export class ModalComponent implements OnInit {
   /** The information that will appear on the modal. */
   public info!: ModalInformation | null
 
+  /** Determines wheter or not this modal has any image to render. */
+  public hasImage = true
+
+  /**
+   * Shows the modal.
+   */
+  public open = (info: ModalInformation) => {
+    this.info = info
+    this.hasImage = true
+    this.isVisible = true
+  }
+
   /**
    * Hides the modal.
    */
@@ -36,8 +48,7 @@ export class ModalComponent implements OnInit {
    */
   @HostListener('document:keyup', ['$event'])
   handleCloseKeyEvent = (event: KeyboardEvent): void => {
-    if(event.key === 'Escape')
-    {
+    if(event.key === 'Escape') {
       this.close()
     }
   }

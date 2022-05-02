@@ -101,7 +101,7 @@ export class ChemicalElementComponent{
       const temperature = this.temperatureService.getTemperature()
       if (!this.element.meltingPoint || temperature < this.element.meltingPoint) {
         return 'state-solid'
-      }     
+      }
       if (!this.element.boilingPoint || temperature < this.element.boilingPoint) {
         return 'state-liquid'
       }

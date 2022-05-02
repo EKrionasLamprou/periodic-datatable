@@ -42,8 +42,8 @@ export class ModalService {
   public open = () => {
     const element = this.elementSelector.selectedElement
     if (element) {
-      this.component.info = this.getInfo(element)
-      this.component.isVisible = true
+      const info = this.getInfo(element)
+      this.component.open(info)
     }
   }
 
@@ -54,7 +54,7 @@ export class ModalService {
    * @returns A derived class of the {@linkcode ModalInformation} class, whose type is
    * determined by the current {@linkcode Mode}.
    */
-  private getInfo = (element: ChemicalElement) : ModalInformation | null => {
+  private getInfo = (element: ChemicalElement) : ModalInformation => {
     const mode = this.modeService.getMode()
     switch (mode) {
       case Mode.Blocks: return new BlockModalInformation(element)

@@ -17,6 +17,8 @@ export abstract class ModalInformation {
     abstract getDetails(): [string, string][]
     /** Gets the description section of modal information. */
     abstract getDescription(): string
+    /** Gets the url for the image section of modal information. */
+    abstract getImageUrl(): string | null
 }
 
 /** Represents chemical information of an element to be shown on the modal. */
@@ -25,6 +27,11 @@ export class ElementModalInformation extends ModalInformation {
     getSubTitle = (): string => this.element.name
     getDetails = (): [string, string][] => getElementDetails(this.element)
     getDescription = (): string => this.element.description
+    getImageUrl = (): string | null => {
+        const path = '../../../assets/images/chemical-elements/chemical_element_'
+        const suffix = '.jpg'
+        return path + this.element.atomicNumber + suffix
+    }
 }
 /** Represents chemical information of an element block to be shown on the modal. */
 export class BlockModalInformation extends ModalInformation {
@@ -32,6 +39,7 @@ export class BlockModalInformation extends ModalInformation {
     getSubTitle = (): string => ''
     getDetails = (): [string, string][] => []
     getDescription = (): string => this.element.block.description
+    getImageUrl = (): string | null => null
 }
 /** Represents chemical information of an element group to be shown on the modal. */
 export class GroupModalInformation extends ModalInformation {
@@ -39,6 +47,7 @@ export class GroupModalInformation extends ModalInformation {
     getSubTitle = (): string => this.element.group.trivialName ?? ''
     getDetails = (): [string, string][] => []
     getDescription = (): string => this.element.group.description
+    getImageUrl = (): string | null => null
 }
 /** Represents chemical information of an element period to be shown on the modal. */
 export class PeriodModalInformation extends ModalInformation {
@@ -46,6 +55,7 @@ export class PeriodModalInformation extends ModalInformation {
     getSubTitle = (): string => ''
     getDetails = (): [string, string][] => []
     getDescription = (): string => this.element.period.description
+    getImageUrl = (): string | null => null
 }
 
 /**
@@ -73,7 +83,7 @@ function getElementDetails(element: ChemicalElement): [string, string][] {
             : details.push(['Group', element.group.name])
         : details.push(['Group', '-'])
 
-    details.push(['Period', `Period ${element.period.index}`])
+    details.push(['Period', element.period.index.toString()])
 
     return details
 }
