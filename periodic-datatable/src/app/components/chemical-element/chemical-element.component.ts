@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core'
 import { Classification } from 'src/app/enums/classification.enum'
 import { Mode } from 'src/app/enums/mode.enum'
 import { ElementSelector } from 'src/app/services/element-selector.service'
+import { ModalService } from 'src/app/services/modal.service'
 import { ModeService } from 'src/app/services/mode.service'
 import { TemperatureService } from 'src/app/services/temperature.service'
 import { ChemicalElement } from '../../models/chemical-element.model'
@@ -24,7 +25,8 @@ export class ChemicalElementComponent{
     private chemicalElementService: ChemicalElementService,
     private elementSelector: ElementSelector,
     private modeService: ModeService,
-    private temperatureService: TemperatureService) {
+    private temperatureService: TemperatureService,
+    private modalService: ModalService) {
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -119,6 +121,13 @@ export class ChemicalElementComponent{
       case Mode.Classification: return getClassificationClass()
       default: throw new Error('Invalid mode.')
     }
+  }
+
+  /**
+   * Opens the modal window.
+   */
+  public openModal = (): void => {
+    this.modalService.open()
   }
 
   /**

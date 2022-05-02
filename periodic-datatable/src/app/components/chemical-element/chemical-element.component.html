@@ -1,5 +1,8 @@
 <div class="element-container" (mouseenter)="select()" (mouseleave)="unselect()">
-    <div class="element-tile {{getElementTileClass()}}">
+    <div
+        class="element-tile {{getElementTileClass()}}"
+        (click)="openModal()"
+        >
         <span class="element-number">{{element.atomicNumber}}</span>
         <span class="element-symbol">{{element.symbol}}</span>
         <span class="element-name">{{element.name | titlecase}}</span>

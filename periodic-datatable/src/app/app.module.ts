@@ -10,7 +10,8 @@ import { PeriodicTableComponent } from './components/periodic-table/periodic-tab
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { ThermostatComponent } from './components/thermostat/thermostat.component';
 import { LegendComponent } from './components/legend/legend.component';
-import { HeaderComponent } from './components/header/header.component'
+import { HeaderComponent } from './components/header/header.component';
+import { ModalComponent } from './components/modal/modal.component'
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HeaderComponent } from './components/header/header.component'
     ThermostatComponent,
     LegendComponent,
     HeaderComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
