@@ -1,7 +1,12 @@
 @import ../../../styles/colours
 
+$modal-width: 50%
+$modal-height: 60%
+
 $close-btn-size: 2vw
-$close-font-size: 1vw
+$close-btn-font-size: 1vw
+
+$animation-speed: 130ms
 
 @mixin full-size
     position: fixed
@@ -18,7 +23,9 @@ $close-font-size: 1vw
 
     .background
         @include full-size
-        background: $modal-background
+        animation: $animation-speed 1 fade 0s
+        animation-timing-function: ease-in
+        animation-fill-mode: forwards
 
     .modal
         position: relative
@@ -34,6 +41,9 @@ $close-font-size: 1vw
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
         font-size: 1vw
 
+        animation: $animation-speed 1 open 0s
+        animation-timing-function: ease-out
+
         .close-btn
             position: absolute
             top: 0
@@ -44,7 +54,7 @@ $close-font-size: 1vw
             background: $navbar-button-colour
             border-radius: 25%
             color: $text-colour
-            font-size: $close-font-size
+            font-size: $close-btn-font-size
             cursor: pointer
             &:hover
                 background: $navbar-button-colour-hover
@@ -74,3 +84,20 @@ $close-font-size: 1vw
                         object-fit: cover
                         box-shadow: 0px 5px 15px $modal-text-colour
                         border-radius: 3%
+
+@keyframes open
+    0%
+        width: 0%
+        height: 0%
+        transform: translateY(50%)
+    100%
+        width: $modal-width
+        height: $modal-height
+        transform: translateY(0)
+
+@keyframes fade
+    0%
+        background: transparent
+
+    100%
+        background: $modal-background

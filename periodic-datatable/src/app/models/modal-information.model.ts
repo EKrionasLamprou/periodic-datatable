@@ -1,3 +1,4 @@
+import { Classification } from "../enums/classification.enum"
 import { ChemicalElement } from "./chemical-element.model"
 
 /** Represents chemical information to be shown on the modal. */
@@ -70,7 +71,7 @@ function getElementDetails(element: ChemicalElement): [string, string][] {
     const getTemperaturePointOrUnknown = (temperature: number | null): string =>
         temperature ? `${temperature} K` : '?' // Returns '?' if unknown
 
-    details.push(['Classification', element.classification.toString()])
+    details.push(['Classification', Classification[element.classification]])
     details.push(['Radioactive', element.isRadioactive ? 'True' : 'False'])
     details.push(['Atomic Mass', `${element.atomicMass} Da`])
     details.push(['Melting Point', getTemperaturePointOrUnknown(element.meltingPoint)])
