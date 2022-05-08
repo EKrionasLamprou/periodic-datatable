@@ -9,7 +9,6 @@ import { Observable } from '../models/observable-pattern/observable.model'
   providedIn: 'root'
 })
 export class ModeService extends Observable {
-
   constructor() {
     super(() => this.getMode())
   }

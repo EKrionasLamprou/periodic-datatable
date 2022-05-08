@@ -49,7 +49,7 @@ export class AtomicNumberError extends Error {
      * @param max The maximum valid value.
      */
     constructor(input: number, min: number, max: number) {
-        const message = `Invalid temperature value '${input}K'.` +
+        const message = `Invalid temperature value '${input}K'. ` +
             `Must be between ${min}K and ${max}K.`
         super(message)
     }

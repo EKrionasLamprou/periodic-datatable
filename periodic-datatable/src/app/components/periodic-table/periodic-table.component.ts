@@ -9,7 +9,6 @@ import { Component } from '@angular/core'
   styleUrls: ['./periodic-table.component.sass']
 })
 export class PeriodicTableComponent{
-
   constructor() {
   }
 }

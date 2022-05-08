@@ -71,6 +71,7 @@ function getElementDetails(element: ChemicalElement): [string, string][] {
     const getTemperaturePointOrUnknown = (temperature: number | null): string =>
         temperature ? `${temperature} K` : '?' // Returns '?' if unknown
 
+    details.push(['Atomic Number', element.atomicNumber.toString()])
     details.push(['Classification', Classification[element.classification]])
     details.push(['Radioactive', element.isRadioactive ? 'True' : 'False'])
     details.push(['Atomic Mass', `${element.atomicMass} Da`])

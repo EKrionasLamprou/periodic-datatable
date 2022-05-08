@@ -23,7 +23,7 @@ export class ElementGridService {
    */
   public getGrid() {
     let grid = new Array<ChemicalElement | null>()
-    
+
     /**
      * Used for adding multiple {@linkcode ChemicalElement} objects to the grid array.
      * @param i The atomic number of the first element to add.

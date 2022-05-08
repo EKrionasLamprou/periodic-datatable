@@ -11,7 +11,6 @@ import { ModeService } from 'src/app/services/mode.service'
   styleUrls: ['./legend.component.sass']
 })
 export class LegendComponent {
-
   constructor(private modeService: ModeService) {
     this.items = this.getItems()
     modeService.subscribe(this, () => this.items = this.getItems())

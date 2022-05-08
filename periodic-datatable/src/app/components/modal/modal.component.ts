@@ -11,11 +11,9 @@ import { ModalService } from 'src/app/services/modal.service'
   styleUrls: ['./modal.component.sass']
 })
 export class ModalComponent implements OnInit {
-  constructor(
-    private modalService: ModalService) {
+  constructor(private modalService: ModalService) {
   }
   ngOnInit(): void {
-    // Connects this component to the modalService.
     this.modalService.connectComponent(this)
   }
 

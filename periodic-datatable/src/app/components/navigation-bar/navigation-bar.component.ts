@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { ModeService } from 'src/app/services/mode.service'
 
 /**
@@ -10,7 +10,6 @@ import { ModeService } from 'src/app/services/mode.service'
   styleUrls: ['./navigation-bar.component.sass']
 })
 export class NavigationBarComponent {
-
   constructor(private modeService: ModeService) {
   }
 

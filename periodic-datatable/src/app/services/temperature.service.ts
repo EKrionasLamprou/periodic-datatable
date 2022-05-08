@@ -8,7 +8,6 @@ import { TemperatureOutOfRangeError } from '../models/error.model'
   providedIn: 'root'
 })
 export class TemperatureService {
-
   constructor() {
   }
 
@@ -37,5 +36,5 @@ export class TemperatureService {
    * Gets the global temperature in Celsius.
    */
   public getTemperatureInCelsius = (): number =>
-    Math.floor(this.temperature - this.zeroCelsius)
+    Math.round(this.temperature - this.zeroCelsius)
 }
