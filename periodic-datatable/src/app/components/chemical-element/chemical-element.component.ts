@@ -7,6 +7,7 @@ import { ModeService } from 'src/app/services/mode.service'
 import { TemperatureService } from 'src/app/services/temperature.service'
 import { ChemicalElement } from '../../models/chemical-element.model'
 import { ChemicalElementService } from '../../services/chemical-element.service'
+import { AtomicNumberError } from '../../models/error.model'
 
 /**
  * Represents a single chemical element tile on the periodic table.
@@ -31,7 +32,7 @@ export class ChemicalElementComponent{
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
     if (!this.element) {
-      throw this.invalidAtomicNumberError()
+      throw new AtomicNumberError(this.atomicNumber)
     }
   }
 
@@ -119,7 +120,6 @@ export class ChemicalElementComponent{
       case Mode.Radioactive: return getRadioactiveClass()
       case Mode.States: return getStateClass()
       case Mode.Classification: return getClassificationClass()
-      default: throw new Error('Invalid mode.')
     }
   }
 
@@ -129,11 +129,4 @@ export class ChemicalElementComponent{
   public openModal = (): void => {
     this.modalService.open()
   }
-
-  /**
-   * Returns an Error that describes invalid atomic number input.
-   * @returns An {@linkcode Error} object.
-   */
-  private invalidAtomicNumberError = () => new Error(
-    `There's no known element with atomic number '${this.atomicNumber}' in the universe.`)
 }

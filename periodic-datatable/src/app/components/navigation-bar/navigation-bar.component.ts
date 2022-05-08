@@ -9,7 +9,7 @@ import { ModeService } from 'src/app/services/mode.service'
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.sass']
 })
-export class NavigationBar {
+export class NavigationBarComponent {
 
   constructor(private modeService: ModeService) {
   }
@@ -25,5 +25,5 @@ export class NavigationBar {
    * Gets the html class of each input and determines wheter or not it is selected.
    */
   public getInputClass = (mode: number): string =>
-    this.modeService.getMode() == mode ? 'selected' : ''
+    this.modeService.getMode() === mode ? 'selected' : ''
 }

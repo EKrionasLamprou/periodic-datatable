@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Mode } from 'src/app/enums/mode.enum'
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
+import { TooltipTypeError } from 'src/app/models/error.model'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
 
@@ -139,8 +140,7 @@ export class TooltipComponent implements OnInit {
         this.getBackgroundText = (): string => this.element!.block.name.substring(0, 1)
         break
       default:
-        throw new Error('Invalid tooptip type input.' +
-          'Must be: type="auto|elements|groups|periods|blocks".')
+        throw new TooltipTypeError(type)
     }
   }
 }

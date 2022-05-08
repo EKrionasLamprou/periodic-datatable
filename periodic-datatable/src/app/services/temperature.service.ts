@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TemperatureOutOfRangeError } from '../models/error.model'
 
 /**
  * A service that gets and sets the global temperature variable of the application.
@@ -19,14 +20,16 @@ export class TemperatureService {
   private readonly zeroCelsius = 273.15
   /** The global temperature in Kelvin. */
   private temperature: number = this.zeroCelsius
-  
+
   /** Gets the global temperature in Kelvin. */
   public getTemperature = (): number => this.temperature
 
   /** Sets the global temperature in Kelvin. */
   public setTemperature = (value: number): void => {
     const isInRange = value >= this.minTemperature && value <= this.maxTemperature
-    if (!isInRange) throw this.temperatureOutOfRangeError()
+    if (!isInRange) {
+      throw new TemperatureOutOfRangeError(value, this.minTemperature, this.maxTemperature)
+    }
     this.temperature = value
   }
 
@@ -35,11 +38,4 @@ export class TemperatureService {
    */
   public getTemperatureInCelsius = (): number =>
     Math.floor(this.temperature - this.zeroCelsius)
-    
-  /**
-   * Returns an Error that describes that temperature value is out of range.
-   * @returns An {@linkcode Error} object.
-   */
-   private temperatureOutOfRangeError = () => new Error(
-    `Temperature must be between ${this.minTemperature} and ${this.maxTemperature}.`)
 }

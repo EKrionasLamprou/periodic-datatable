@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ModeService } from 'src/app/services/mode.service'
-import { NavigationBar } from './navigation-bar.component'
+import { NavigationBarComponent } from './navigation-bar.component'
 
-describe('ControlPanelComponent', () => {
-  let component: NavigationBar
-  let fixture: ComponentFixture<NavigationBar>
+describe('NavigationBarComponent', () => {
+  let component: NavigationBarComponent
+  let fixture: ComponentFixture<NavigationBarComponent>
   let modeService: ModeService
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavigationBar]
+      declarations: [NavigationBarComponent]
     })
       .compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationBar)
+    fixture = TestBed.createComponent(NavigationBarComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
     modeService = TestBed.inject(ModeService)

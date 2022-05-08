@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
+import { GridTypeError } from 'src/app/models/error.model'
 import { ElementGridComponent } from './element-grid.component'
 
 describe('ElementGridComponent', () => {
@@ -9,7 +10,7 @@ describe('ElementGridComponent', () => {
   const createComponent = (grid: string) => {
     fixture = TestBed.createComponent(ElementGridComponent)
     component = fixture.componentInstance
-    component.grid = grid
+    component.gridType = grid
     fixture.detectChanges()
   }
 
@@ -23,7 +24,7 @@ describe('ElementGridComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ElementGridComponent)
     component = fixture.componentInstance
-    component.grid = 'top'
+    component.gridType = 'top'
     fixture.detectChanges()
   })
 
@@ -49,14 +50,10 @@ describe('ElementGridComponent', () => {
 
   it('should throw error on invalid input', () => {
     const invalidStrings: string[] = ['', 'error', 'anything', ' top']
-    const invalidTypes: any[] = [undefined, null, NaN, 123, 0, 3.14, true, false]
 
     invalidStrings.forEach(input => {
-      const message = `Invalid grid type '${input}'. Can only be 'top' or 'bottom'.`
-      expect(() => createComponent(input)).toThrowError(message)
-    })
-    invalidTypes.forEach(input => {
-      expect(() => createComponent(input)).toThrowError()
+      const error = new GridTypeError(input)
+      expect(() => createComponent(input)).toThrow(error)
     })
   })
 })

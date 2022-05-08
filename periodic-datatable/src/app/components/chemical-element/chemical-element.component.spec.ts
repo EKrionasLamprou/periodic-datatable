@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { AtomicNumberError } from 'src/app/models/error.model'
 import { ChemicalElementComponent } from './chemical-element.component'
 
 describe('ElementComponent', () => {
@@ -30,8 +31,8 @@ describe('ElementComponent', () => {
   it('should throw error if atomic number is invalid', () => {
     const invalidAtomicNumbers: any[] = [undefined, true, 'error', NaN, Infinity, -10, 0, 119, 1000]
     for (const number of invalidAtomicNumbers) {
-      const message = `There's no known element with atomic number '${number}' in the universe.`
-      expect(() => createComponent(number)).toThrowError(message)
+      const error = new AtomicNumberError(number)
+      expect(() => createComponent(number)).toThrow(error)
     }
   })
 })

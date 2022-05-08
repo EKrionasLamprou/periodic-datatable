@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
+import { GridTypeError } from 'src/app/models/error.model'
 import { ElementGridService } from 'src/app/services/element-grid.service'
 
 /**
@@ -8,13 +9,13 @@ import { ElementGridService } from 'src/app/services/element-grid.service'
  * f-block, or the bottom grid that contains all the elements of the f-block.
  */
 @Component({
-  selector: 'app-element-grid[grid]',
+  selector: 'app-element-grid[gridType]',
   templateUrl: './element-grid.component.html',
   styleUrls: ['./element-grid.component.sass']
 })
 export class ElementGridComponent implements OnInit {
   @Input()
-  grid!: string
+  gridType!: string
 
   constructor(private elementGridService: ElementGridService) {
   }
@@ -31,22 +32,17 @@ export class ElementGridComponent implements OnInit {
    * periodic table.
    */
   private getGridElements(): (ChemicalElement | null)[] {
-    if (!this.grid) throw this.invalidGridTypeError(this.grid);
-    
-    switch (this.grid?.toLowerCase()) {
+    if (!this.gridType){
+      throw new GridTypeError(this.gridType)
+    }
+
+    switch (this.gridType?.toLowerCase()) {
       case 'top':
         return this.elementGridService.getGrid().top()
       case 'bottom':
         return this.elementGridService.getGrid().bottom()
       default:
-        throw this.invalidGridTypeError(this.grid);
+        throw new GridTypeError(this.gridType)
     }
   }
-
- /**
- * Returns an Error that describes invalid grid type input.
- * @returns An {@linkcode Error} object.
- */
-  private invalidGridTypeError = (input: string) => new Error(
-    `Invalid grid type '${input}'. Can only be 'top' or 'bottom'.`);
 }

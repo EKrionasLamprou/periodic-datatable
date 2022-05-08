@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { Mode } from 'src/app/enums/mode.enum'
+import { TemperatureOutOfRangeError } from 'src/app/models/error.model'
 import { ModeService } from 'src/app/services/mode.service'
 import { TemperatureService } from 'src/app/services/temperature.service'
 import { ThermostatComponent } from './thermostat.component'
@@ -34,16 +35,18 @@ describe('ThermostatComponent', () => {
     component.setTemperature(temperature.toString())
     expect(temperatureService.getTemperature()).toEqual(temperature)
   })
-  
+
   it('should throw error on invalid temperature input', () => {
+    const min: number = temperatureService.minTemperature
+    const max: number = temperatureService.maxTemperature
     const invalidInputs = [
-      '',
-      'invalid',
-      (temperatureService.minTemperature - 1).toString(),
-      (temperatureService.maxTemperature + 1).toString(),
+      '', 'invalid', (min - 1).toString(), (max + 1).toString()
     ]
+
     for (const input of invalidInputs) {
-      expect(() => component.setTemperature(input)).toThrowError()
+      let value = parseInt(input)
+      const error = new TemperatureOutOfRangeError(value, min, max)
+      expect(() => component.setTemperature(input)).toThrow(error)
     }
   })
 
