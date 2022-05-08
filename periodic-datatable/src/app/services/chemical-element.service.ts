@@ -25,13 +25,16 @@ export class ChemicalElementService {
   }
 
   /** Represents a chemical element that describes its chemical properties and its place in the periodic table. */
-  chemicalElements: ChemicalElement[]
+  private chemicalElements: ChemicalElement[]
   /** Represents a column of chemical elements in the periodic table. */
-  groups: Group[]
+  private groups: Group[]
   /** Represents a row of chemical elements in the periodic table. */
-  periods: Period[]
+  private periods: Period[]
   /** Represents a block of chemical elements in the periodic table. */
-  blocks: Block[]
+  private blocks: Block[]
+
+  /** The number of known chemical elements represented on the periodic table. */
+  public readonly elementCount = 118
 
   /**
    * Finds a chemical element by it's symbol.
@@ -41,14 +44,23 @@ export class ChemicalElementService {
   public getElement = (index: number): ChemicalElement =>
     this.chemicalElements.find(element => element.atomicNumber === index) as ChemicalElement
 
+  /**
+   * Returns a range of chemical elements.
+   * @param i The starting index to get elements from. Index starts from 1 and
+   * represents the element's atomic number.
+   * @param n The number of elements to get from the starting index.
+   * @returns An array of {@linkcode ChemicalElement} objects.
+   */
   public getElements = (i: number = 1, n: number | null = null): ChemicalElement[] => {
-    // TO DO: Rework this code to make it more readable. ----------------------------------------------!
-    const maxLength = this.chemicalElements.length
-    const length = (n && i + n <= maxLength) ? n : maxLength
+    const nHasValue = n !== undefined && n !== null
+    const length = nHasValue
+      ? i + n
+      : this.elementCount + 1
     let result = new Array<ChemicalElement>()
 
-    for (let x = 0; x < length; x++)
-      result.push(this.getElement(x + i))
+    for (let x = i; x < length; x++) {
+      result.push(this.getElement(x))
+    }
     return result
   }
 
