@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { Mode } from 'src/app/enums/mode.enum'
 import { ModeService } from 'src/app/services/mode.service'
 import { LegendComponent } from './legend.component'
 
@@ -40,7 +39,7 @@ describe('LegendComponent', () => {
     for (let i = 0; i < len; i++) {
       const expectedItem = expectedItems[i]
       const hasContent = expectedItem.length > 0
-      
+
       service.setMode(i)
       expect(component['getItems']()).toEqual(expectedItem)
       expect(component.hasContent()).toEqual(hasContent)
