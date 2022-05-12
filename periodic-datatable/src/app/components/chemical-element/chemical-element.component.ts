@@ -8,6 +8,7 @@ import { TemperatureService } from 'src/app/services/temperature.service'
 import { ChemicalElement } from '../../models/chemical-element.model'
 import { ChemicalElementService } from '../../services/chemical-element.service'
 import { AtomicNumberError } from '../../models/error.model'
+import { DatatableService } from 'src/app/services/datatable.service'
 
 /**
  * Represents a single chemical element tile on the periodic table.
@@ -27,7 +28,8 @@ export class ChemicalElementComponent{
     private elementSelector: ElementSelector,
     private modeService: ModeService,
     private temperatureService: TemperatureService,
-    private modalService: ModalService) {
+    private modalService: ModalService,
+    private datatableService: DatatableService) {
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -59,46 +61,47 @@ export class ChemicalElementComponent{
    * Gets the element tile html class, based on the current mode.
    * @returns A string of the html class name.
    */
-  public getElementTileClass = (): string => {
+  public getElementTileHtmlClass = (): string => {
+    let htmlClass = ''
 
-    const getElementClass = (): string => ''
+    const getElementsHtmlClass = (): string => ''
 
-    const getBlocksClass = (): string => {
-      let tileClass: string = ''
-      tileClass += `${this.element.block.name}`
+    const getBlocksHtmlClass = (): string => {
+      let blocksClass: string = ''
+      blocksClass += `${this.element.block.name}`
       if (this.elementSelector.selectedElement?.block === this.element.block) {
-        tileClass += ' highlighted'
+        blocksClass += ' highlighted'
       }
-      return tileClass
+      return blocksClass
     }
 
-    const getGroupsClass = (): string => {
-      let tileClass: string = ''
+    const getGroupsHtmlClass = (): string => {
+      let groupsClass: string = ''
       if (this.element.group) {
-        tileClass += this.element.group.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
+        groupsClass += this.element.group.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
         if (this.elementSelector.selectedElement?.group === this.element.group) {
-          tileClass += ' highlighted'
+          groupsClass += ' highlighted'
         }
       }
       else {
-        tileClass += ' disabled'
+        groupsClass += ' disabled'
       }
-      return tileClass
+      return groupsClass
     }
 
-    const getPeriodsClass = (): string => {
-      let tileClass: string = ''
-      tileClass += this.element.period.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
+    const getPeriodsHtmlClass = (): string => {
+      let periodsClass: string = ''
+      periodsClass += this.element.period.index % 2 === 0 ? ' stripe-even' : ' stripe-odd'
       if (this.elementSelector.selectedElement?.period === this.element.period) {
-        tileClass += ' highlighted'
+        periodsClass += ' highlighted'
       }
-      return tileClass
+      return periodsClass
     }
 
-    const getRadioactiveClass = (): string =>
+    const getRadioactiveHtmlClass = (): string =>
       this.element.isRadioactive ? 'radioactive-true' : 'radioactive-false'
 
-    const getStateClass = (): string => {
+    const getStateHtmlClass = (): string => {
       const temperature = this.temperatureService.getTemperature()
       if (!this.element.meltingPoint || temperature < this.element.meltingPoint) {
         return 'state-solid'
@@ -109,18 +112,24 @@ export class ChemicalElementComponent{
       return 'state-vapour'
     }
 
-    const getClassificationClass = (): string =>
+    const getClassificationHtmlClass = (): string =>
       'classification-' + Classification[this.element.classification].toString().toLowerCase()
 
-    switch (this.modeService.getMode()) {
-      case Mode.Elements: return getElementClass()
-      case Mode.Blocks: return getBlocksClass()
-      case Mode.Groups: return getGroupsClass()
-      case Mode.Periods: return getPeriodsClass()
-      case Mode.Radioactive: return getRadioactiveClass()
-      case Mode.States: return getStateClass()
-      case Mode.Classification: return getClassificationClass()
+    if (this.isDatatableOpen()) {
+      htmlClass += 'minimal '
     }
+
+    switch (this.modeService.getMode()) {
+      case Mode.Elements: htmlClass += getElementsHtmlClass(); break
+      case Mode.Blocks: htmlClass += getBlocksHtmlClass(); break
+      case Mode.Groups: htmlClass += getGroupsHtmlClass(); break
+      case Mode.Periods: htmlClass += getPeriodsHtmlClass(); break
+      case Mode.Radioactive: htmlClass += getRadioactiveHtmlClass(); break
+      case Mode.States: htmlClass += getStateHtmlClass(); break
+      case Mode.Classification: htmlClass += getClassificationHtmlClass(); break
+    }
+
+    return htmlClass
   }
 
   /**
@@ -129,4 +138,10 @@ export class ChemicalElementComponent{
   public openModal = (): void => {
     this.modalService.open()
   }
+
+  /**
+   * Returns true if the datatable is currently open, false otherwise.
+   */
+  public isDatatableOpen = (): boolean =>
+    this.datatableService.isVisible()
 }

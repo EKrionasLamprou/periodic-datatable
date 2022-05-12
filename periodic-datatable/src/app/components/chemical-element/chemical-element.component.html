@@ -1,10 +1,15 @@
 <div class="element-container" (mouseenter)="select()" (mouseleave)="unselect()">
     <div
-        class="element-tile {{getElementTileClass()}}"
+        class="element-tile {{getElementTileHtmlClass()}}"
         (click)="openModal()"
     >
         <span class="element-number">{{element.atomicNumber}}</span>
         <span class="element-symbol">{{element.symbol}}</span>
-        <span class="element-name">{{element.name | titlecase}}</span>
+        <span
+            class="element-name"
+            *ngIf="!isDatatableOpen()"
+        >
+            {{element.name | titlecase}}
+        </span>
     </div>
 </div>

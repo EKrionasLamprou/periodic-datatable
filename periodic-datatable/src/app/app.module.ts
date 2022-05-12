@@ -11,7 +11,9 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { ThermostatComponent } from './components/thermostat/thermostat.component';
 import { LegendComponent } from './components/legend/legend.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ModalComponent } from './components/modal/modal.component'
+import { ModalComponent } from './components/modal/modal.component';
+import { DatatableComponent } from './components/datatable/datatable.component';
+import { ContentComponent } from './components/content/content.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ModalComponent } from './components/modal/modal.component'
     LegendComponent,
     HeaderComponent,
     ModalComponent,
+    DatatableComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,
