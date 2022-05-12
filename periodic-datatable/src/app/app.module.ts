@@ -13,7 +13,8 @@ import { LegendComponent } from './components/legend/legend.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
-import { ContentComponent } from './components/content/content.component'
+import { ContentComponent } from './components/content/content.component';
+import { DatatableToogleComponent } from './components/datatable-toogle/datatable-toogle.component'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ContentComponent } from './components/content/content.component'
     ModalComponent,
     DatatableComponent,
     ContentComponent,
+    DatatableToogleComponent,
   ],
   imports: [
     BrowserModule,
