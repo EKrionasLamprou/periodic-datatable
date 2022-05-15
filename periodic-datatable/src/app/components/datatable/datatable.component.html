@@ -1,3 +1,3 @@
-<div class="container" *ngFor="let element of getElements()">
-    <app-datatable-row [atomicNumber]="element.atomicNumber"></app-datatable-row>
+<div class="container">
+    <app-datatable-row *ngFor="let element of getElements()" [atomicNumber]="element.atomicNumber"></app-datatable-row>
 </div>

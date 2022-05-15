@@ -7,7 +7,7 @@ export class DatatableService {
   constructor() {
   }
 
-  private isHidden: boolean = true
+  private isHidden: boolean = false
 
   public isVisible = (): boolean => !this.isHidden
 

@@ -5,7 +5,8 @@ import { ChemicalElement } from "./chemical-element.model"
  * Represents a component that has information about a single chemical element.
  */
 export abstract class ElementalComponent {
-  constructor(protected elementSelector: ElementSelector) {
+  constructor(
+    protected elementSelector: ElementSelector) {
   }
 
   /** Represents a chemical element that and its chemical properties and

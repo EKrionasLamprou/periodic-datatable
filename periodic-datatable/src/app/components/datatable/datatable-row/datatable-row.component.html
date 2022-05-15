@@ -1,3 +1,11 @@
 <div class="container">
-    {{this.atomicNumber}}
+    <span class="cell">{{this.element.atomicNumber}}</span>
+    <span class="cell">{{this.element.name}}</span>
+    <span class="cell">{{this.element.classification}}</span>
+    <span class="cell">{{this.element.isRadioactive}}</span>
+    <span class="cell">{{this.element.meltingPoint}}</span>
+    <span class="cell">{{this.element.boilingPoint}}</span>
+    <span class="cell">{{this.element.block.name}}</span>
+    <span class="cell">{{this.element.group?.name ?? '-'}}</span>
+    <span class="cell">{{this.element.period.index}}</span>
 </div>
