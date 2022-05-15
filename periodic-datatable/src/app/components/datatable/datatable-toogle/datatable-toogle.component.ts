@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { DatatableService } from 'src/app/services/datatable.service'
 
+/**
+ * Represents a button that shows/hides the datatable.
+ */
 @Component({
   selector: 'app-datatable-toogle',
   templateUrl: './datatable-toogle.component.html',

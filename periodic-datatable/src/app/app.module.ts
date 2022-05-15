@@ -14,7 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { ContentComponent } from './components/content/content.component';
-import { DatatableToogleComponent } from './components/datatable-toogle/datatable-toogle.component'
+import { DatatableToogleComponent } from './components/datatable/datatable-toogle/datatable-toogle.component';
+import { DatatableRowComponent } from './components/datatable/datatable-row/datatable-row.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DatatableToogleComponent } from './components/datatable-toogle/datatabl
     DatatableComponent,
     ContentComponent,
     DatatableToogleComponent,
+    DatatableRowComponent,
   ],
   imports: [
     BrowserModule,

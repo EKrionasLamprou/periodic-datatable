@@ -5,10 +5,10 @@ import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModalService } from 'src/app/services/modal.service'
 import { ModeService } from 'src/app/services/mode.service'
 import { TemperatureService } from 'src/app/services/temperature.service'
-import { ChemicalElement } from '../../models/chemical-element.model'
 import { ChemicalElementService } from '../../services/chemical-element.service'
 import { AtomicNumberError } from '../../models/error.model'
 import { DatatableService } from 'src/app/services/datatable.service'
+import { ElementalComponent } from 'src/app/models/elemental-component'
 
 /**
  * Represents a single chemical element tile on the periodic table.
@@ -18,18 +18,19 @@ import { DatatableService } from 'src/app/services/datatable.service'
   templateUrl: './chemical-element.component.html',
   styleUrls: ['./chemical-element.component.sass'],
 })
-export class ChemicalElementComponent{
+export class ChemicalElementComponent extends ElementalComponent {
   /** The atomic number or nuclear charge number (symbol Z) of a chemical element. */
   @Input()
   atomicNumber!: number
 
   constructor(
     private chemicalElementService: ChemicalElementService,
-    private elementSelector: ElementSelector,
     private modeService: ModeService,
     private temperatureService: TemperatureService,
     private modalService: ModalService,
-    private datatableService: DatatableService) {
+    private datatableService: DatatableService,
+    elementSelector: ElementSelector) {
+      super(elementSelector)
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -37,19 +38,6 @@ export class ChemicalElementComponent{
       throw new AtomicNumberError(this.atomicNumber)
     }
   }
-
-  /** Represents a chemical element that describes its chemical properties and its place in the periodic table. */
-  public element!: ChemicalElement
-
-  /**
-   * Sets this element as selected.
-   */
-  public select = () => this.elementSelector.select(this.element.atomicNumber)
-
-  /**
-   * Replaces this element with null as the selected one.
-   */
-  public unselect = () => this.elementSelector.select(null)
 
   /**
    * Checks whether or not 'Blocks' is the current selected mode.
