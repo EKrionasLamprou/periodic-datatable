@@ -6,6 +6,7 @@ import periodData from '../../assets/data/periods.json'
 import { Classification } from '../enums/classification.enum'
 import { Block } from '../models/block.model'
 import { ChemicalElement } from '../models/chemical-element.model'
+import { InvalidClassification } from '../models/error.model'
 import { Group } from '../models/group.model'
 import { Period } from '../models/period.model'
 
@@ -94,9 +95,10 @@ export class ChemicalElementService {
    * Returns the classification name that corresponds to the given number.
    * @param classification The number that represents a classification.
    * Must be between 0 and 2.
-   * @returns A string that represents a classification name ('nonmetal', 'metaloid' or 'metal').
+   * @returns A string that represents a classification name ('nonmetal', 'metaloid' or 'metal'),
+   * or undefined if the given number does not correspond to a classification.
    */
-  public getClassification = (classification: (number | Classification)): string =>
+  public getClassification = (classification: (number | Classification)): string | undefined =>
     this.classificationNames[classification]
 
   /**

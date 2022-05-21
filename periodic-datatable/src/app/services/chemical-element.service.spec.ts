@@ -59,4 +59,17 @@ describe('ChemicalElementService', () => {
     expect(service.getBlock(4).index).toEqual(4)
     expect(service.getBlock(5).index).toEqual(5)
   })
+
+  it('should get classification name or undefined', () => {
+    const expectedOutputs = ['nonmetal', 'metaloid', 'metal']
+    const wrongInputs = [NaN, Infinity, -1, 3, 1000]
+    const len = expectedOutputs.length
+
+    for (let i = 0; i < len; i++) {
+      expect(service.getClassification(i)).toEqual(expectedOutputs[i])
+    }
+    for (const input of wrongInputs) {
+      expect(service.getClassification(input)).toBeUndefined
+    }
+  })
 })
