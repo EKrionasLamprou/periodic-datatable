@@ -32,6 +32,8 @@ export class ChemicalElementService {
   private periods: Period[]
   /** Represents a block of chemical elements in the periodic table. */
   private blocks: Block[]
+  /** Contains the names of the element classification, based on their metallic properties */
+  private readonly classificationNames = ['nonmetal', 'metaloid', 'metal']
 
   /** The number of known chemical elements represented on the periodic table. */
   public readonly elementCount = 118
@@ -87,6 +89,15 @@ export class ChemicalElementService {
    */
   public getBlock = (index: number): Block =>
     this.blocks.find(block => block.index === index) as Block
+
+  /**
+   * Returns the classification name that corresponds to the given number.
+   * @param classification The number that represents a classification.
+   * Must be between 0 and 2.
+   * @returns A string that represents a classification name ('nonmetal', 'metaloid' or 'metal').
+   */
+  public getClassification = (classification: (number | Classification)): string =>
+    this.classificationNames[classification]
 
   /**
    * Maps the chemical-elements.json data into an array of {@linkcode ChemicalElement} objects.

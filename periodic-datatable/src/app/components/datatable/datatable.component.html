@@ -1,3 +1,30 @@
 <div class="container">
-    <app-datatable-row *ngFor="let element of getElements()" [atomicNumber]="element.atomicNumber"></app-datatable-row>
+    <table>
+        <thead>
+            <tr>
+                <th>Z</th>
+                <th>Name</th>
+                <th>Classification</th>
+                <th>Radioactivity</th>
+                <th>Melting Point</th>
+                <th>Boiling Point</th>
+                <th>Block</th>
+                <th>Group</th>
+                <th>Period</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of getElements()">
+                <td class="cell">{{element.atomicNumber}}</td>
+                <td class="cell">{{element.name}}</td>
+                <td class="cell">{{getElementClassification(element.classification)}}</td>
+                <td class="cell">{{element.isRadioactive}}</td>
+                <td class="cell">{{element.meltingPoint}}</td>
+                <td class="cell">{{element.boilingPoint}}</td>
+                <td class="cell">{{element.block.name}}</td>
+                <td class="cell">{{element.group?.name ?? '-'}}</td>
+                <td class="cell">{{element.period.index}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

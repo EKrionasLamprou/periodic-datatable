@@ -921,6 +921,7 @@
             "symbol": "Sm",
             "description": "A moderately hard silvery metal that slowly oxidizes in air.",
             "classification": 2,
+            "isRadioactive": false,
             "atomicMass": 150.36,
             "density": 7.52,
             "meltingPoint": 1345,

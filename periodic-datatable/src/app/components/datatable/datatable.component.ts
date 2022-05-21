@@ -16,4 +16,7 @@ export class DatatableComponent {
 
   public getElements = (): ChemicalElement[] =>
     this.chemicalElementService.getElements()
+
+  public getElementClassification = (classification: number): string =>
+    this.chemicalElementService.getClassification(classification)
 }
