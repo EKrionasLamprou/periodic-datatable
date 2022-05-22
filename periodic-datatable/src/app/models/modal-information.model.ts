@@ -36,7 +36,7 @@ export class ElementModalInformation extends ModalInformation {
 }
 /** Represents chemical information of an element block to be shown on the modal. */
 export class BlockModalInformation extends ModalInformation {
-    getTitle = (): string => this.element.block.name
+    getTitle = (): string => `${this.element.block.name}-block`
     getSubTitle = (): string => ''
     getDetails = (): [string, string][] => []
     getDescription = (): string => this.element.block.description

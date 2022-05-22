@@ -135,7 +135,7 @@ export class TooltipComponent implements OnInit {
         this.getBackgroundText = (): string => this.element!.period.index.toString()
         break
       case 'blocks':
-        this.getTitle = (): string => this.element!.block.name
+        this.getTitle = (): string => `${this.element!.block.name}-block`
         this.getDescription = (): string => this.element!.block.description
         this.getBackgroundText = (): string => this.element!.block.name.substring(0, 1)
         break

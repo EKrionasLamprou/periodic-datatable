@@ -56,7 +56,7 @@ export class ChemicalElementComponent extends ElementalComponent {
 
     const getBlocksHtmlClass = (): string => {
       let blocksClass: string = ''
-      blocksClass += `${this.element.block.name}`
+      blocksClass += `${this.element.block.name}-block`
       if (this.elementSelector.selectedElement?.block === this.element.block) {
         blocksClass += ' highlighted'
       }

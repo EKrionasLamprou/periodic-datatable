@@ -1,9 +1,33 @@
+@import ../../../styles/colours
+    
 .container
-    background: pink
-    margin-left: 4%
-    height: 50vh
+    display: flex
+    margin-left: 3%
+    height: 45rem
     overflow-y: scroll
 
-    td
-        //padding: 0 1%
-        text-align: center
+table
+    position: relative
+    text-align: left
+    color: $text-colour
+    border-collapse: collapse
+  
+th, td
+    padding: 0.25rem
+
+th
+    position: sticky
+    top: 0
+    background: $navbar-button-colour
+    box-shadow: 0 2px 2px 1px $modal-text-colour
+  
+tr
+    background: $tile-colour
+    
+tr:nth-child(even)
+    background: $tile-colour-stripe
+
+tr:hover
+    background: $tile-colour-selected
+    box-shadow: 0 0 50px $tile-colour-selected
+    color: $modal-text-colour

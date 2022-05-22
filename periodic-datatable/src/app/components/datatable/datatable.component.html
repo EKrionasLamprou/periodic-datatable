@@ -4,8 +4,9 @@
             <tr>
                 <th>Z</th>
                 <th>Name</th>
+                <th>Symbol</th>
                 <th>Classification</th>
-                <th>Radioactivity</th>
+                <th>Radiation</th>
                 <th>Melting Point</th>
                 <th>Boiling Point</th>
                 <th>Block</th>
@@ -16,9 +17,10 @@
         <tbody>
             <tr *ngFor="let element of getElements()">
                 <td class="cell">{{element.atomicNumber}}</td>
-                <td class="cell">{{element.name}}</td>
+                <td class="cell">{{element.name | titlecase}}</td>
+                <td class="cell">{{element.symbol}}</td>
                 <td class="cell">{{getElementClassification(element.classification)}}</td>
-                <td class="cell">{{element.isRadioactive}}</td>
+                <td class="cell">{{element.isRadioactive ? '☢' : ''}}</td>
                 <td class="cell">{{element.meltingPoint}}</td>
                 <td class="cell">{{element.boilingPoint}}</td>
                 <td class="cell">{{element.block.name}}</td>
