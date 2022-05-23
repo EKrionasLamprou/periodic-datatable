@@ -15,17 +15,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let element of getElements()">
-                <td class="cell">{{element.atomicNumber}}</td>
-                <td class="cell">{{element.name | titlecase}}</td>
-                <td class="cell">{{element.symbol}}</td>
-                <td class="cell">{{getElementClassification(element.classification)}}</td>
-                <td class="cell">{{element.isRadioactive ? '☢' : ''}}</td>
-                <td class="cell">{{element.meltingPoint}}</td>
-                <td class="cell">{{element.boilingPoint}}</td>
-                <td class="cell">{{element.block.name}}</td>
-                <td class="cell">{{element.group?.name ?? '-'}}</td>
-                <td class="cell">{{element.period.index}}</td>
+            <tr
+                *ngFor="let ele of getElements()"
+                (mouseenter)="selectElement(ele)"
+                (mouseleave)="unselect()"
+                [class]="getRowHtmlClass(ele)"
+            >
+                <td class="cell">{{ele.atomicNumber}}</td>
+                <td class="cell">{{ele.name | titlecase}}</td>
+                <td class="cell">{{ele.symbol}}</td>
+                <td class="cell">{{getElementClassification(ele.classification)}}</td>
+                <td class="cell">{{ele.isRadioactive ? '☢' : ''}}</td>
+                <td class="cell">{{ele.meltingPoint}}</td>
+                <td class="cell">{{ele.boilingPoint}}</td>
+                <td class="cell">{{ele.block.name}}</td>
+                <td class="cell">{{ele.group?.name ?? '-'}}</td>
+                <td class="cell">{{ele.period.index}}</td>
             </tr>
         </tbody>
     </table>

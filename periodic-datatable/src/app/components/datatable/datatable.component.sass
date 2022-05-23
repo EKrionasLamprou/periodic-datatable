@@ -23,11 +23,11 @@ th
   
 tr
     background: $tile-colour
-    
-tr:nth-child(even)
-    background: $tile-colour-stripe
+        
+    &:nth-child(even)
+        background: $tile-colour-stripe
 
-tr:hover
-    background: $tile-colour-selected
-    box-shadow: 0 0 50px $tile-colour-selected
-    color: $modal-text-colour
+    &.selected
+        background: $tile-colour-selected
+        box-shadow: 0 0 50px $tile-colour-selected
+        color: $modal-text-colour

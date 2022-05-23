@@ -106,6 +106,9 @@ export class ChemicalElementComponent extends ElementalComponent {
     if (this.isDatatableOpen()) {
       htmlClass += 'minimal '
     }
+    if (this.element === this.elementSelector.selectedElement) {
+      htmlClass += 'selected '
+    }
 
     switch (this.modeService.getMode()) {
       case Mode.Elements: htmlClass += getElementsHtmlClass(); break

@@ -47,7 +47,7 @@ $font: 'Times New Roman', Times, serif
             font-size: 1.15vw
             bottom: 0
 
-    &:hover
+    &.selected
         background: $tile-colour-selected
         color: $tile-colour
         border: 2px solid $tile-colour
@@ -99,7 +99,7 @@ $font: 'Times New Roman', Times, serif
     animation: 1s 1 open-radiation 1s
     animation-fill-mode: forwards
 
-    &:hover
+    &.selected
         animation-fill-mode: none
         background: $radiation-true-colour
         border: 2px solid $radiation-true-colour
@@ -110,7 +110,7 @@ $font: 'Times New Roman', Times, serif
     background: transparent
     color: $radiation-false-colour
     text-shadow: none
-    &:hover
+    &.selected
         background: transparent
         box-shadow: 0 0 10px $radiation-false-colour
         border: 2px solid transparent
