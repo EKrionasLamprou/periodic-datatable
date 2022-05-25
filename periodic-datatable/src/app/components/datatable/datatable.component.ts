@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { elementAt } from 'rxjs';
+import { Sorting } from 'src/app/enums/sorting.enum';
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
 import { ElementalComponent } from 'src/app/models/elemental-component';
 import { InvalidClassification } from 'src/app/models/error.model'
@@ -26,6 +27,12 @@ export class DatatableComponent extends ElementalComponent {
 
   /** An array of chemical elements. */
   elements: ChemicalElement[]
+
+  /** The current sorting method. */
+  sorting: Sorting = Sorting.ByZ
+
+  /** True if sorting is reversed. */
+  isSortingReversed: boolean = false
 
   /**
    * Returns all the known chemical elements.
@@ -72,7 +79,14 @@ export class DatatableComponent extends ElementalComponent {
    * @param sortBy A number representing the sorting method.
    */
   public sort = (sortBy: number): void => {
-    this.elementSorter.sort(this.elements, sortBy, true)
+    if (this.sorting === sortBy) {
+      this.isSortingReversed = !this.isSortingReversed
+    }
+    else {
+      this.isSortingReversed = false
+    }
+    this.sorting = sortBy
+    this.elementSorter.sort(this.elements, this.sorting, this.isSortingReversed)
   } 
 
   /**

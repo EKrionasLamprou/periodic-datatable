@@ -17,44 +17,44 @@ export class ElementSorter {
     collection.sort(function (a: ChemicalElement, b: ChemicalElement) {
       switch (sorting) {
         case Sorting.ByZ: return descending
-          ? a.atomicNumber - b.atomicNumber
-          : b.atomicNumber - a.atomicNumber
+          ? b.atomicNumber - a.atomicNumber
+          : a.atomicNumber - b.atomicNumber
 
         case Sorting.ByName: return descending
-          ? a.name.localeCompare(b.name)
-          : b.name.localeCompare(a.name)
+          ? b.name.localeCompare(a.name)
+          : a.name.localeCompare(b.name)
 
         case Sorting.BySymbol: return descending
-          ? a.symbol.localeCompare(b.symbol)
-          : b.symbol.localeCompare(a.symbol)
+          ? b.symbol.localeCompare(a.symbol)
+          : a.symbol.localeCompare(b.symbol)
 
         case Sorting.ByClassification: return descending
-          ? a.classification - b.classification
-          : b.classification - a.classification
+          ? b.classification - a.classification
+          : a.classification - b.classification
 
         case Sorting.ByRadiation: return descending
-          ? (a.isRadioactive === b.isRadioactive)? 0 : a.isRadioactive? -1 : 1
-          : (a.isRadioactive === b.isRadioactive)? 0 : b.isRadioactive? -1 : 1
+          ? (a.isRadioactive === b.isRadioactive)? 0 : b.isRadioactive? -1 : 1
+          : (a.isRadioactive === b.isRadioactive)? 0 : a.isRadioactive? -1 : 1
 
         case Sorting.ByMeltingPoint: return descending
-          ? (a.meltingPoint ?? Infinity) - (b.meltingPoint ?? Infinity)
-          : (b.meltingPoint ?? Infinity) - (a.meltingPoint ?? Infinity)
+          ? (b.meltingPoint ?? Infinity) - (a.meltingPoint ?? Infinity)
+          : (a.meltingPoint ?? Infinity) - (b.meltingPoint ?? Infinity)
 
         case Sorting.ByBoilingPoint: return descending
-          ? (a.boilingPoint ?? Infinity) - (b.boilingPoint ?? Infinity)
-          : (b.boilingPoint ?? Infinity) - (a.boilingPoint ?? Infinity)
+          ? (b.boilingPoint ?? Infinity) - (a.boilingPoint ?? Infinity)
+          : (a.boilingPoint ?? Infinity) - (b.boilingPoint ?? Infinity)
 
         case Sorting.ByBlock: return descending
-          ? a.block.index - b.block.index
-          : b.block.index - a.block.index
+          ? b.block.index - a.block.index
+          : a.block.index - b.block.index
 
         case Sorting.ByGroup: return descending
-          ? (a.group?.index ?? 0) - (b.group?.index ?? 0)
-          : (b.group?.index ?? 0) - (a.group?.index ?? 0)
+          ? (b.group?.index ?? 0) - (a.group?.index ?? 0)
+          : (a.group?.index ?? 0) - (b.group?.index ?? 0)
 
         case Sorting.ByPeriod: return descending
-          ? a.period.index - b.period.index
-          : b.period.index - a.period.index
+          ? b.period.index - a.period.index
+          : a.period.index - b.period.index
 
         default: return 0;
       }
