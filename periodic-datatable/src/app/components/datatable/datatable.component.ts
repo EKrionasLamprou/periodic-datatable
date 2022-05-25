@@ -5,6 +5,7 @@ import { ElementalComponent } from 'src/app/models/elemental-component';
 import { InvalidClassification } from 'src/app/models/error.model'
 import { ChemicalElementService } from 'src/app/services/chemical-element.service'
 import { ElementSelector } from 'src/app/services/element-selector.service';
+import { ElementSorter } from 'src/app/services/element-sorter.service';
 
 /**
  * Represents a datatable with information about the chemical elements.
@@ -17,12 +18,17 @@ import { ElementSelector } from 'src/app/services/element-selector.service';
 export class DatatableComponent extends ElementalComponent {
   constructor(
     private chemicalElementService: ChemicalElementService,
-    elementSelector: ElementSelector) {
+    elementSelector: ElementSelector,
+    private elementSorter: ElementSorter) {
     super(elementSelector)
+    this.elements = this.getElements()
   }
 
+  /** An array of chemical elements. */
+  elements: ChemicalElement[]
+
   /**
-   * Returns all the chemical elements.
+   * Returns all the known chemical elements.
    * @returns A {@linkcode ChemicalElement} array of all the elements.
    */
   public getElements = (): ChemicalElement[] =>
@@ -60,6 +66,14 @@ export class DatatableComponent extends ElementalComponent {
    */
   public getRowHtmlClass = (element: ChemicalElement): string =>
     this.isSelected(element) ? 'selected' : ''
+
+  /**
+   * Sorts the elements.
+   * @param sortBy A number representing the sorting method.
+   */
+  public sort = (sortBy: number): void => {
+    this.elementSorter.sort(this.elements, sortBy, true)
+  } 
 
   /**
    * Returns true if the given chemical is selected.

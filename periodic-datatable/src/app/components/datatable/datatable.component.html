@@ -2,21 +2,21 @@
     <table>
         <thead>
             <tr>
-                <th>Z</th>
-                <th>Name</th>
-                <th>Symbol</th>
-                <th>Classification</th>
-                <th>Radiation</th>
-                <th>Melting Point</th>
-                <th>Boiling Point</th>
-                <th>Block</th>
-                <th>Group</th>
-                <th>Period</th>
+                <th (click)="sort(0)">Z</th>
+                <th (click)="sort(1)">Name</th>
+                <th (click)="sort(2)">Symbol</th>
+                <th (click)="sort(3)">Classification</th>
+                <th (click)="sort(4)">Radiation</th>
+                <th (click)="sort(5)">Melting Point</th>
+                <th (click)="sort(6)">Boiling Point</th>
+                <th (click)="sort(7)">Block</th>
+                <th (click)="sort(8)">Group</th>
+                <th (click)="sort(9)">Period</th>
             </tr>
         </thead>
         <tbody>
             <tr
-                *ngFor="let ele of getElements()"
+                *ngFor="let ele of elements"
                 (mouseenter)="selectElement(ele)"
                 (mouseleave)="unselect()"
                 [class]="getRowHtmlClass(ele)"
