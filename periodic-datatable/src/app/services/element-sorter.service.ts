@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core'
 import { Sorting } from '../enums/sorting.enum'
 import { ChemicalElement } from '../models/chemical-element.model'
 
+/**
+ * A services that handles operations on sorting elements.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +12,12 @@ export class ElementSorter {
   constructor() {
   }
 
+  /**
+   * Sorts a collection of chemical elements.
+   * @param collection The array of elements to be sorted.
+   * @param sorting The sorting method.
+   * @param descending True to reverse the sorting.
+   */
   public sort = (
     collection: ChemicalElement[],
     sorting: Sorting,

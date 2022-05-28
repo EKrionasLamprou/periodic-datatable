@@ -15,15 +15,17 @@ $thumb-colour: #363e45
 .container
     display: flex
     justify-content: center
-    margin: 1% 0 3% 0
+
     &.hidden
         visibility: hidden
+
     .temperature-slider
         -webkit-appearance: none
         width: $slider-width
         height: $slider-height
         background: $slider-colour
         cursor: pointer
+
     .temperature-slider::-webkit-slider-thumb
         @include thumb
     .temperature-slider::-moz-range-thumb
@@ -32,6 +34,7 @@ $thumb-colour: #363e45
     .temperature-text
         position: absolute
         width: 100%
+        heigh: 100%
         font-size: 25px
         font-family: Arial, Helvetica, sans-serif
         text-align: center
