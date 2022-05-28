@@ -27,10 +27,10 @@ export class ChemicalElementComponent extends ElementalComponent {
     private chemicalElementService: ChemicalElementService,
     private modeService: ModeService,
     private temperatureService: TemperatureService,
-    private modalService: ModalService,
+    modalService: ModalService,
     private datatableService: DatatableService,
     elementSelector: ElementSelector) {
-      super(elementSelector)
+      super(elementSelector, modalService)
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -121,13 +121,6 @@ export class ChemicalElementComponent extends ElementalComponent {
     }
 
     return htmlClass
-  }
-
-  /**
-   * Opens the modal window.
-   */
-  public openModal = (): void => {
-    this.modalService.open()
   }
 
   /**

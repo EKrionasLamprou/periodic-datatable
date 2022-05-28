@@ -21,16 +21,16 @@
                 (mouseleave)="unselect()"
                 [class]="getRowHtmlClass(ele)"
             >
-                <td class="cell">{{ele.atomicNumber}}</td>
-                <td class="cell">{{ele.name | titlecase}}</td>
-                <td class="cell">{{ele.symbol}}</td>
-                <td class="cell">{{getElementClassification(ele.classification)}}</td>
-                <td class="cell">{{ele.isRadioactive ? '☢' : ''}}</td>
-                <td class="cell">{{ele.meltingPoint}}</td>
-                <td class="cell">{{ele.boilingPoint}}</td>
-                <td class="cell">{{ele.block.name}}</td>
-                <td class="cell">{{ele.group?.name ?? '-'}}</td>
-                <td class="cell">{{ele.period.index}}</td>
+                <td class="cell" (click)="openModal()">{{ele.atomicNumber}}</td>
+                <td class="cell" (click)="openModal()">{{ele.name | titlecase}}</td>
+                <td class="cell" (click)="openModal()">{{ele.symbol}}</td>
+                <td class="cell" (click)="openModal()">{{getElementClassification(ele.classification)}}</td>
+                <td class="cell" (click)="openModal()">{{ele.isRadioactive ? '☢' : ''}}</td>
+                <td class="cell" (click)="openModal()">{{ele.meltingPoint}}</td>
+                <td class="cell" (click)="openModal()">{{ele.boilingPoint}}</td>
+                <td class="cell" (click)="openModal()">{{ele.block.name}}</td>
+                <td class="cell" (click)="openModal()">{{ele.group?.name ?? '-'}}</td>
+                <td class="cell" (click)="openModal()">{{ele.period.index}}</td>
             </tr>
         </tbody>
     </table>

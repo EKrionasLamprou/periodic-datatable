@@ -1,4 +1,5 @@
 import { ElementSelector } from "../services/element-selector.service"
+import { ModalService } from "../services/modal.service"
 import { ChemicalElement } from "./chemical-element.model"
 
 /**
@@ -6,7 +7,8 @@ import { ChemicalElement } from "./chemical-element.model"
  */
 export abstract class ElementalComponent {
   constructor(
-    protected elementSelector: ElementSelector) {
+    protected elementSelector: ElementSelector,
+    private modalService: ModalService) {
   }
 
   /** Represents a chemical element that and its chemical properties and
@@ -22,4 +24,11 @@ export abstract class ElementalComponent {
    * Replaces this element with null as the selected one.
    */
   public unselect = () => this.elementSelector.select(null)
+
+  /**
+ * Opens the modal window.
+ */
+  public openModal = (): void => {
+    this.modalService.open()
+  }
 }

@@ -45,6 +45,12 @@ $animation-speed: 130ms
     animation: $animation-speed 1 open 0s
     animation-timing-function: ease-out
 
+    // Make the modal text selectable (overrides the global style)
+    -webkit-user-select: text
+    -moz-user-select: text
+    -ms-user-select: text
+    user-select: text
+
 .close-btn
     position: absolute
     top: 0

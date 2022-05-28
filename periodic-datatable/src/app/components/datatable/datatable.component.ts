@@ -7,6 +7,7 @@ import { InvalidClassification } from 'src/app/models/error.model'
 import { ChemicalElementService } from 'src/app/services/chemical-element.service'
 import { ElementSelector } from 'src/app/services/element-selector.service';
 import { ElementSorter } from 'src/app/services/element-sorter.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 /**
  * Represents a datatable with information about the chemical elements.
@@ -20,8 +21,9 @@ export class DatatableComponent extends ElementalComponent {
   constructor(
     private chemicalElementService: ChemicalElementService,
     elementSelector: ElementSelector,
+    modalService: ModalService,
     private elementSorter: ElementSorter) {
-    super(elementSelector)
+    super(elementSelector, modalService)
     this.elements = this.getElements()
   }
 
