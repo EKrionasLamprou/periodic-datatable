@@ -1,7 +1,11 @@
-<div class="element-container" (mouseenter)="select()" (mouseleave)="unselect()">
+<div
+    class="element-container"
+    (mouseenter)="select()"
+    (mouseleave)="unselect()"
+    (click)="openModal()"
+>
     <div
         class="element-tile {{getElementTileHtmlClass()}}"
-        (click)="openModal()"
     >
         <span class="element-number">{{element.atomicNumber}}</span>
         <span class="element-symbol">{{element.symbol}}</span>

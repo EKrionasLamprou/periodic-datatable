@@ -5,13 +5,13 @@
                 <th (click)="sort(0)">Z</th>
                 <th (click)="sort(1)">Name</th>
                 <th (click)="sort(2)">Symbol</th>
-                <th (click)="sort(3)">Classification</th>
-                <th (click)="sort(4)">Radiation</th>
-                <th (click)="sort(5)">Melting Point</th>
-                <th (click)="sort(6)">Boiling Point</th>
-                <th (click)="sort(7)">Block</th>
-                <th (click)="sort(8)">Group</th>
-                <th (click)="sort(9)">Period</th>
+                <th (click)="sort(3)">Class.</th>
+                <th (click)="sort(4)">Melts (K)</th>
+                <th (click)="sort(5)">Boils (K)</th>
+                <th (click)="sort(6)">Block</th>
+                <th (click)="sort(7)">Group</th>
+                <th (click)="sort(8)">Period</th>
+                <th (click)="sort(9)">Radiation</th>
             </tr>
         </thead>
         <tbody>
@@ -25,12 +25,12 @@
                 <td class="cell" (click)="openModal()">{{ele.name | titlecase}}</td>
                 <td class="cell" (click)="openModal()">{{ele.symbol}}</td>
                 <td class="cell" (click)="openModal()">{{getElementClassification(ele.classification)}}</td>
-                <td class="cell" (click)="openModal()">{{ele.isRadioactive ? '☢' : ''}}</td>
-                <td class="cell" (click)="openModal()">{{ele.meltingPoint}}</td>
-                <td class="cell" (click)="openModal()">{{ele.boilingPoint}}</td>
+                <td class="cell" (click)="openModal()">{{ele.meltingPoint ?? '?'}}</td>
+                <td class="cell" (click)="openModal()">{{ele.boilingPoint ?? '?'}}</td>
                 <td class="cell" (click)="openModal()">{{ele.block.name}}</td>
                 <td class="cell" (click)="openModal()">{{ele.group?.name ?? '-'}}</td>
                 <td class="cell" (click)="openModal()">{{ele.period.index}}</td>
+                <td class="cell" (click)="openModal()">{{ele.isRadioactive ? '☢' : ''}}</td>
             </tr>
         </tbody>
     </table>

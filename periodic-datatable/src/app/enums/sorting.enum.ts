@@ -14,9 +14,6 @@ export enum Sorting {
     /** Sort by classification. */
     ByClassification,
 
-    /** Sort by radiation. */
-    ByRadiation,
-
     /** Sort by melting point. */
     ByMeltingPoint,
 
@@ -28,7 +25,10 @@ export enum Sorting {
 
     /** Sort by group. */
     ByGroup,
-    
+
     /** Sort by period. */
     ByPeriod,
+
+    /** Sort by radiation. */
+    ByRadiation,
 }

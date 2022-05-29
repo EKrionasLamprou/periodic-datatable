@@ -1,4 +1,7 @@
-<div *ngIf="hasContent()" class="container">
+<div
+    *ngIf="hasContent()"
+    class="container"
+>
     <ul class="list">
         <li *ngFor="let item of items" class="item {{item}}">
             {{item}}

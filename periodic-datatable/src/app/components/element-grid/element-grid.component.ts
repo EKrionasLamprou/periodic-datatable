@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
 import { GridTypeError } from 'src/app/models/error.model'
 import { ElementGridService } from 'src/app/services/element-grid.service'
+import { ElementGridComponentDoc } from './element-grid.component.doc'
 
 /**
  * Represents a grid of elements on the periodic table. It can be either the
@@ -13,9 +14,8 @@ import { ElementGridService } from 'src/app/services/element-grid.service'
   templateUrl: './element-grid.component.html',
   styleUrls: ['./element-grid.component.sass']
 })
-export class ElementGridComponent implements OnInit {
-  @Input()
-  gridType!: string
+export class ElementGridComponent
+  implements OnInit, ElementGridComponentDoc {
 
   constructor(private elementGridService: ElementGridService) {
   }
@@ -23,14 +23,11 @@ export class ElementGridComponent implements OnInit {
     this.elements = this.getGridElements()
   }
 
-  /** The chemical elements that belong to this grid. */
+  @Input()
+  gridType!: string
+
   elements!: (ChemicalElement | null)[]
 
-  /**
-   * Returns an array with {@linkcode ChemicalElement} objects and null, that
-   * represent the chemical elements and the whitespaces respectively on the
-   * periodic table.
-   */
   private getGridElements(): (ChemicalElement | null)[] {
     if (!this.gridType){
       throw new GridTypeError(this.gridType)

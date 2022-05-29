@@ -6,7 +6,6 @@ import periodData from '../../assets/data/periods.json'
 import { Classification } from '../enums/classification.enum'
 import { Block } from '../models/block.model'
 import { ChemicalElement } from '../models/chemical-element.model'
-import { InvalidClassification } from '../models/error.model'
 import { Group } from '../models/group.model'
 import { Period } from '../models/period.model'
 

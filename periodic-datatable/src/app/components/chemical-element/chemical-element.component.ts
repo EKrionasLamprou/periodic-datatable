@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core'
 import { Classification } from 'src/app/enums/classification.enum'
 import { Mode } from 'src/app/enums/mode.enum'
+import { ElementalComponent } from 'src/app/models/elemental-component'
+import { DatatableService } from 'src/app/services/datatable.service'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModalService } from 'src/app/services/modal.service'
 import { ModeService } from 'src/app/services/mode.service'
 import { TemperatureService } from 'src/app/services/temperature.service'
-import { ChemicalElementService } from '../../services/chemical-element.service'
 import { AtomicNumberError } from '../../models/error.model'
-import { DatatableService } from 'src/app/services/datatable.service'
-import { ElementalComponent } from 'src/app/models/elemental-component'
+import { ChemicalElementService } from '../../services/chemical-element.service'
+import { ChemicalElementComponentDoc } from './chemical-element.component.doc'
 
 /**
  * Represents a single chemical element tile on the periodic table.
@@ -18,11 +19,10 @@ import { ElementalComponent } from 'src/app/models/elemental-component'
   templateUrl: './chemical-element.component.html',
   styleUrls: ['./chemical-element.component.sass'],
 })
-export class ChemicalElementComponent extends ElementalComponent {
-  /** The atomic number or nuclear charge number (symbol Z) of a chemical element. */
+export class ChemicalElementComponent
+  extends ElementalComponent implements ChemicalElementComponentDoc {
   @Input()
   atomicNumber!: number
-
   constructor(
     private chemicalElementService: ChemicalElementService,
     private modeService: ModeService,
@@ -30,7 +30,7 @@ export class ChemicalElementComponent extends ElementalComponent {
     modalService: ModalService,
     private datatableService: DatatableService,
     elementSelector: ElementSelector) {
-      super(elementSelector, modalService)
+    super(elementSelector, modalService)
   }
   ngOnInit() {
     this.element = this.chemicalElementService.getElement(this.atomicNumber)
@@ -39,16 +39,6 @@ export class ChemicalElementComponent extends ElementalComponent {
     }
   }
 
-  /**
-   * Checks whether or not 'Blocks' is the current selected mode.
-   * @returns True if the selected mode is 'Blocks', false otherwise.
-   */
-  public isInBlockMode = (): boolean => this.modeService.getMode() === Mode.Blocks
-
-  /**
-   * Gets the element tile html class, based on the current mode.
-   * @returns A string of the html class name.
-   */
   public getElementTileHtmlClass = (): string => {
     let htmlClass = ''
 
@@ -123,9 +113,6 @@ export class ChemicalElementComponent extends ElementalComponent {
     return htmlClass
   }
 
-  /**
-   * Returns true if the datatable is currently open, false otherwise.
-   */
   public isDatatableOpen = (): boolean =>
     this.datatableService.isVisible()
 }

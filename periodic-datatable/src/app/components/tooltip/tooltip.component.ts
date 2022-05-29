@@ -4,22 +4,15 @@ import { ChemicalElement } from 'src/app/models/chemical-element.model'
 import { TooltipTypeError } from 'src/app/models/error.model'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
+import { TooltipComponentDoc } from './tooltip.component.doc'
 
 @Component({
   selector: 'app-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.sass']
 })
-export class TooltipComponent implements OnInit {
-  /**
-   * Sets the type of the toolip component to match a given mode.
-   * Can be set to 'elements', 'blocks', 'groups', or 'periods' so that the
-   * title and description of the tooltip matches the respective modes.
-   * Alternatively, setting it to 'auto' will automatically update the tooltip
-   * to match the current mode.
-   */
-  @Input()
-  type: string = 'auto'
+export class TooltipComponent
+  implements OnInit, TooltipComponentDoc {
 
   constructor(
     private elementSelector: ElementSelector,
@@ -30,14 +23,11 @@ export class TooltipComponent implements OnInit {
     this.elementSelector.subscribe(this, this.updateElement)
   }
 
-  /** Represents the selected element to be shown in the tooltip. */
+  @Input()
+  type: string = 'auto'
+
   element: ChemicalElement | null = null
 
-  /**
-   * Returns the html class, based on the mode and the radioactivity of the
-   * selected element.
-   * @returns A string on the html class name.
-   */
   public getRadioactivityClass = (): string => {
     const mode: Mode = this.modeService.getMode()
     if (mode === Mode.Radioactive) {
@@ -49,26 +39,12 @@ export class TooltipComponent implements OnInit {
     return ''
   }
 
-  /**
-   * Returns the title of the tooltip.
-   */
   public getTitle!: () => string
 
-  /**
-   * Returns the description of the tooltip.
-   */
   public getDescription!: () => string
 
-  /**
-   * Returns the background text of the tooltip.
-   */
   public getBackgroundText!: () => string
 
-  /**
-   * Determines whether or not the tooltip has information to show for the
-   * selected element.
-   * @returns True if the tooltip has information to show, false otherwise.
-   */
   public hasData = (): boolean => {
     if (!this.element) return false
 
@@ -80,16 +56,12 @@ export class TooltipComponent implements OnInit {
     return true
   }
 
-  /**
-   * Called by observable on selected element change.
-   * */
+  // Called by observable on selected element change.
   private updateElement = (value: any): void => {
     this.element = value as ChemicalElement | null
   }
 
-  /**
-   * Called by observable on mode change.
-   * */
+  // Called by observable on mode change.
   private updateMode = (value: any): void => {
     let mode: string = Mode[value].toString()
     if (!['Groups', 'Periods', 'Blocks'].includes(mode))
@@ -97,14 +69,7 @@ export class TooltipComponent implements OnInit {
     this.setFunctions(mode)
   }
 
-  /**
-   * Sets the implementation of the function properties to match the given mode.
-   * @param type The type of the toolip component to match a given mode.
-   * Can be set to 'elements', 'blocks', 'groups', or 'periods' so that the
-   * title and description of the tooltip matches the respective modes.
-   * Alternatively, setting it to 'auto' will automatically update the tooltip
-   * to match the current mode.
-   */
+  // Sets the implementation of the function properties to match the given mode.
   private setFunctions = (type: string) => {
     switch (type?.toLowerCase()) {
       case 'auto':

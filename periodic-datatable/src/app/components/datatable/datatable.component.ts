@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { elementAt } from 'rxjs';
-import { Sorting } from 'src/app/enums/sorting.enum';
+import { Component } from '@angular/core'
+import { Sorting } from 'src/app/enums/sorting.enum'
 import { ChemicalElement } from 'src/app/models/chemical-element.model'
-import { ElementalComponent } from 'src/app/models/elemental-component';
+import { ElementalComponent } from 'src/app/models/elemental-component'
 import { InvalidClassification } from 'src/app/models/error.model'
 import { ChemicalElementService } from 'src/app/services/chemical-element.service'
-import { ElementSelector } from 'src/app/services/element-selector.service';
-import { ElementSorter } from 'src/app/services/element-sorter.service';
-import { ModalService } from 'src/app/services/modal.service';
+import { ElementSelector } from 'src/app/services/element-selector.service'
+import { ElementSorter } from 'src/app/services/element-sorter.service'
+import { ModalService } from 'src/app/services/modal.service'
+import { DatatableComponentDoc } from './datatable.component.doc'
 
 /**
  * Represents a datatable with information about the chemical elements.
@@ -17,37 +17,24 @@ import { ModalService } from 'src/app/services/modal.service';
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.sass']
 })
-export class DatatableComponent extends ElementalComponent {
+export class DatatableComponent
+  extends ElementalComponent implements DatatableComponentDoc {
   constructor(
     private chemicalElementService: ChemicalElementService,
+    private elementSorter: ElementSorter,
     elementSelector: ElementSelector,
-    modalService: ModalService,
-    private elementSorter: ElementSorter) {
+    modalService: ModalService) {
     super(elementSelector, modalService)
     this.elements = this.getElements()
   }
 
-  /** An array of chemical elements. */
   elements: ChemicalElement[]
-
-  /** The current sorting method. */
   sorting: Sorting = Sorting.ByZ
-
-  /** True if sorting is reversed. */
   isSortingReversed: boolean = false
 
-  /**
-   * Returns all the known chemical elements.
-   * @returns A {@linkcode ChemicalElement} array of all the elements.
-   */
   public getElements = (): ChemicalElement[] =>
     this.chemicalElementService.getElements()
 
-  /**
-   * Returns the classification name that corresponds to the given number.
-   * @param classification The number that represents a classification. Must be between 0 and 2.
-   * @returns A string that represents a classification name ('nonmetal', 'metaloid' or 'metal').
-   */
   public getElementClassification = (classification: number): string => {
     const classificationName: string | undefined =
       this.chemicalElementService.getClassification(classification)
@@ -58,28 +45,14 @@ export class DatatableComponent extends ElementalComponent {
     return classificationName
   }
 
-  /**
-   * Sets the given element as selected.
-   * @param element The chemical element to be set as selected.
-   */
   public selectElement = (element: ChemicalElement): void => {
     this.element = element
     this.select()
   }
 
-  /**
-   * Gets the html for a given chemical element's row on the datatable.
-   * @param element The element that corresponds to a datatable row.
-   * @returns A string of value 'selected' if the given element is selected,
-   * empty string otherwise.
-   */
   public getRowHtmlClass = (element: ChemicalElement): string =>
     this.isSelected(element) ? 'selected' : ''
 
-  /**
-   * Sorts the elements.
-   * @param sortBy A number representing the sorting method.
-   */
   public sort = (sortBy: number): void => {
     if (this.sorting === sortBy) {
       this.isSortingReversed = !this.isSortingReversed
@@ -91,11 +64,6 @@ export class DatatableComponent extends ElementalComponent {
     this.elementSorter.sort(this.elements, this.sorting, this.isSortingReversed)
   } 
 
-  /**
-   * Returns true if the given chemical is selected.
-   * @param element The given chemical element.
-   * @returns True if the given element is selected, false otherwise.
-   */
   private isSelected = (element: ChemicalElement): boolean =>
     this.elementSelector.selectedElement == element
 }

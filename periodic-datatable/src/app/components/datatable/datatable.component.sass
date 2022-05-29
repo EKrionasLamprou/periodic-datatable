@@ -2,13 +2,14 @@
 
 .container
     display: flex
+    justify-content: flex-end
     margin-left: 3%
     height: 45rem
     overflow-y: scroll
 
 table
     position: relative
-    text-align: left
+    text-align: center
     color: $text-colour
     border-collapse: collapse
 
@@ -19,14 +20,13 @@ th
     position: sticky
     top: 0
     background: $navbar-button-colour
-    box-shadow: 0 2px 2px 1px $modal-text-colour
-    cursor: pointer
 
     &:hover
         background: $navbar-button-colour-hover
 
 tr
     background: $tile-colour
+    cursor: pointer
         
     &:nth-child(even)
         background: $tile-colour-stripe

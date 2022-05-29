@@ -27,7 +27,7 @@ $animation-speed: 130ms
     animation: $animation-speed 1 fade 0s
     animation-timing-function: ease-in
     animation-fill-mode: forwards
-
+    
 .modal
     position: relative
     margin: 0 auto
@@ -110,6 +110,7 @@ img
 
     100%
         background: $modal-background
+        backdrop-filter: blur(7px)
 
 @media (min-width: $screen-width-1)
     .modal

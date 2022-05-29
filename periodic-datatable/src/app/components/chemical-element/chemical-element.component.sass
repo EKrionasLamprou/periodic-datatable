@@ -4,6 +4,7 @@ $font: 'Times New Roman', Times, serif
 
 .element-container
     padding: 0.5%
+    cursor: pointer
 
 .element-tile
     display: flex
@@ -16,7 +17,6 @@ $font: 'Times New Roman', Times, serif
     background: $tile-colour
     border: 2px solid transparent
     border-radius: 4%
-    cursor: pointer
 
     .element-symbol
         position: relative
@@ -38,14 +38,16 @@ $font: 'Times New Roman', Times, serif
     &.minimal
         padding: 60% 0
         margin: 5%
-        .element-number
-            width: 100%
-            text-align: center
+
         .element-symbol
             position: absolute
             padding: 15% 0
             font-size: 1.15vw
             bottom: 0
+
+        .element-number
+            width: 100%
+            text-align: center
 
     &.selected
         background: $tile-colour-selected
@@ -53,6 +55,7 @@ $font: 'Times New Roman', Times, serif
         border: 2px solid $tile-colour
         box-shadow: 0 0 150px $tile-colour-selected
 
+// Blocks Mode
 .s-block
     background: $tile-colour-block-s
 .p-block
@@ -62,20 +65,13 @@ $font: 'Times New Roman', Times, serif
 .f-block
     background: $tile-colour-block-f
 
+// Groups/Periods mode
 .stripe-odd
     background: $tile-colour
 .stripe-even
     background: $tile-colour-stripe
 
-.highlighted
-    background: $tile-colour-highlighted
-    color: $tile-colour
-    border: 2px solid $tile-colour
-    box-shadow: 0 0 50px $tile-colour-selected
-
-.disabled
-    background: $tile-colour-disabled
-
+// State mode
 .state-solid
     background: $tile-colour-state-solid
 .state-liquid
@@ -83,6 +79,7 @@ $font: 'Times New Roman', Times, serif
 .state-vapour
     background: $tile-colour-state-vapour
 
+// Classification mode
 .classification-nonmetal
     background: $tile-colour-classification-nonmetal
 .classification-metaloid
@@ -90,6 +87,7 @@ $font: 'Times New Roman', Times, serif
 .classification-metal
     background: $tile-colour-classification-metal
 
+// Radiation mode
 .radioactive-true
     background: transparent
     border: 2px solid transparent
@@ -98,14 +96,12 @@ $font: 'Times New Roman', Times, serif
     text-shadow: 0 0 10px transparent
     animation: 1s 1 open-radiation 1s
     animation-fill-mode: forwards
-
     &.selected
         animation-fill-mode: none
         background: $radiation-true-colour
         border: 2px solid $radiation-true-colour
         box-shadow: 0 0 120px $radiation-true-colour
         color: black
-
 .radioactive-false
     background: transparent
     color: $radiation-false-colour
@@ -115,6 +111,15 @@ $font: 'Times New Roman', Times, serif
         box-shadow: 0 0 10px $radiation-false-colour
         border: 2px solid transparent
         color: $radiation-false-colour
+
+.highlighted
+    background: $tile-colour-highlighted
+    color: $tile-colour
+    border: 2px solid $tile-colour
+    box-shadow: 0 0 50px $tile-colour-selected
+
+.disabled
+    background: $tile-colour-disabled
 
 @keyframes open-radiation
     100%

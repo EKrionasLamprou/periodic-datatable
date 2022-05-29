@@ -20,6 +20,9 @@ export abstract class ModalInformation {
     abstract getDescription(): string
     /** Gets the url for the image section of modal information. */
     abstract getImageUrl(): string | null
+
+    /** True if there is information to show. */
+    public hasInfo = (): boolean => !!this.getTitle() && !!this.getDescription()
 }
 
 /** Represents chemical information of an element to be shown on the modal. */
