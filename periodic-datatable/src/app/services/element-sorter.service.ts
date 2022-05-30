@@ -37,13 +37,21 @@ export class ElementSorter {
           ? b.symbol.localeCompare(a.symbol)
           : a.symbol.localeCompare(b.symbol)
 
+        case Sorting.ByWeight: return descending
+          ? b.atomicMass - a.atomicMass
+          : a.atomicMass - b.atomicMass
+
+        case Sorting.ByDensity: return descending
+          ? b.density - a.density
+          : a.density - b.density
+
         case Sorting.ByClassification: return descending
           ? b.classification - a.classification
           : a.classification - b.classification
 
         case Sorting.ByRadiation: return descending
-          ? (a.isRadioactive === b.isRadioactive)? 0 : b.isRadioactive? -1 : 1
-          : (a.isRadioactive === b.isRadioactive)? 0 : a.isRadioactive? -1 : 1
+          ? (a.isRadioactive === b.isRadioactive) ? 0 : b.isRadioactive ? -1 : 1
+          : (a.isRadioactive === b.isRadioactive) ? 0 : a.isRadioactive ? -1 : 1
 
         case Sorting.ByMeltingPoint: return descending
           ? (b.meltingPoint ?? Infinity) - (a.meltingPoint ?? Infinity)

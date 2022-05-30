@@ -8,8 +8,14 @@ export enum Sorting {
     /** Sort by name. */
     ByName,
 
-    /** Sort by atomic. */
+    /** Sort by atomic symbol. */
     BySymbol,
+
+    /** Sort by atomic mass. */
+    ByWeight,
+
+    /** Sort by atomic density. */
+    ByDensity,
 
     /** Sort by classification. */
     ByClassification,

@@ -2,16 +2,18 @@
     <table>
         <thead>
             <tr>
-                <th (click)="sort(0)">Z</th>
-                <th (click)="sort(1)">Name</th>
-                <th (click)="sort(2)">Symbol</th>
-                <th (click)="sort(3)">Class.</th>
-                <th (click)="sort(4)">Melts (K)</th>
-                <th (click)="sort(5)">Boils (K)</th>
-                <th (click)="sort(6)">Block</th>
-                <th (click)="sort(7)">Group</th>
-                <th (click)="sort(8)">Period</th>
-                <th (click)="sort(9)">Radiation</th>
+                <th (click)="sort(00)">Z</th>
+                <th (click)="sort(01)">Name</th>
+                <th (click)="sort(02)">Symbol</th>
+                <th (click)="sort(03)">Weight (Da)</th>
+                <th (click)="sort(04)">Density (g/cm3)</th>
+                <th (click)="sort(05)">Class.</th>
+                <th (click)="sort(06)">Melts (K)</th>
+                <th (click)="sort(07)">Boils (K)</th>
+                <th (click)="sort(08)">Block</th>
+                <th (click)="sort(09)">Group</th>
+                <th (click)="sort(10)">Period</th>
+                <th (click)="sort(11)">Radiation</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@
                 <td class="cell" (click)="openModal()">{{ele.atomicNumber}}</td>
                 <td class="cell" (click)="openModal()">{{ele.name | titlecase}}</td>
                 <td class="cell" (click)="openModal()">{{ele.symbol}}</td>
+                <td class="cell" (click)="openModal()">{{ele.atomicMass}}</td>
+                <td class="cell" (click)="openModal()">{{ele.density}}</td>
                 <td class="cell" (click)="openModal()">{{getElementClassification(ele.classification)}}</td>
                 <td class="cell" (click)="openModal()">{{ele.meltingPoint ?? '?'}}</td>
                 <td class="cell" (click)="openModal()">{{ele.boilingPoint ?? '?'}}</td>
