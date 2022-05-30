@@ -4,15 +4,13 @@ import { ChemicalElement } from 'src/app/models/chemical-element.model'
 import { TooltipTypeError } from 'src/app/models/error.model'
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ModeService } from 'src/app/services/mode.service'
-import { TooltipComponentDoc } from './tooltip.component.doc'
 
 @Component({
   selector: 'app-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.sass']
 })
-export class TooltipComponent
-  implements OnInit, TooltipComponentDoc {
+export class TooltipComponent implements OnInit {
 
   constructor(
     private elementSelector: ElementSelector,
@@ -23,11 +21,24 @@ export class TooltipComponent
     this.elementSelector.subscribe(this, this.updateElement)
   }
 
+  /**
+   * The type of the toolip component that matches a given mode.
+   * Can be set to 'elements', 'blocks', 'groups', or 'periods' so that the
+   * title and description of the tooltip matches the respective modes.
+   * Alternatively, setting it to 'auto' will automatically update the tooltip
+   * to match the current mode.
+   */
   @Input()
   type: string = 'auto'
 
+  /** Represents the selected element to be shown in the tooltip. */
   element: ChemicalElement | null = null
 
+  /**
+   * Returns the html class, based on the mode and the radioactivity of the
+   * selected element.
+   * @returns A string on the html class name.
+   */
   public getRadioactivityClass = (): string => {
     const mode: Mode = this.modeService.getMode()
     if (mode === Mode.Radioactive) {
@@ -39,12 +50,25 @@ export class TooltipComponent
     return ''
   }
 
+  /**
+   * Returns the title of the tooltip.
+   */
   public getTitle!: () => string
 
+  /**
+   * Returns the description of the tooltip.
+   */
   public getDescription!: () => string
 
+  /**
+   * Returns the background text of the tooltip.
+   */
   public getBackgroundText!: () => string
 
+  /**
+   * Whether or not the tooltip has information to show for the selected element.
+   * @returns True if the tooltip has information to show, false otherwise.
+   */
   public hasData = (): boolean => {
     if (!this.element) return false
 

@@ -7,7 +7,6 @@ import { ChemicalElementService } from 'src/app/services/chemical-element.servic
 import { ElementSelector } from 'src/app/services/element-selector.service'
 import { ElementSorter } from 'src/app/services/element-sorter.service'
 import { ModalService } from 'src/app/services/modal.service'
-import { DatatableComponentDoc } from './datatable.component.doc'
 
 /**
  * Represents a datatable with information about the chemical elements.
@@ -17,8 +16,7 @@ import { DatatableComponentDoc } from './datatable.component.doc'
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.sass']
 })
-export class DatatableComponent
-  extends ElementalComponent implements DatatableComponentDoc {
+export class DatatableComponent extends ElementalComponent {
   constructor(
     private chemicalElementService: ChemicalElementService,
     private elementSorter: ElementSorter,
@@ -28,13 +26,25 @@ export class DatatableComponent
     this.elements = this.getElements()
   }
 
+  /** An array of chemical elements. */
   elements: ChemicalElement[]
+  /** The current sorting method. */
   sorting: Sorting = Sorting.ByZ
+  /** True if sorting is reversed. */
   isSortingReversed: boolean = false
 
+  /**
+   * Returns all the known chemical elements.
+   * @returns A {@linkcode ChemicalElement} array of all the elements.
+   */
   public getElements = (): ChemicalElement[] =>
     this.chemicalElementService.getElements()
 
+  /**
+   * Returns the classification name that corresponds to the given number.
+   * @param classification The number that represents a classification. Must be between 0 and 2.
+   * @returns A string that represents a classification name ('nonmetal', 'metaloid' or 'metal').
+   */
   public getElementClassification = (classification: number): string => {
     const classificationName: string | undefined =
       this.chemicalElementService.getClassification(classification)
@@ -45,14 +55,28 @@ export class DatatableComponent
     return classificationName
   }
 
+  /**
+   * Sets the given element as selected.
+   * @param element The chemical element to be set as selected.
+   */
   public selectElement = (element: ChemicalElement): void => {
     this.element = element
     this.select()
   }
 
+  /**
+   * Gets the html for a given chemical element's row on the datatable.
+   * @param element The element that corresponds to a datatable row.
+   * @returns A string of value 'selected' if the given element is selected,
+   * empty string otherwise.
+   */
   public getRowHtmlClass = (element: ChemicalElement): string =>
     this.isSelected(element) ? 'selected' : ''
 
+  /**
+   * Sorts the elements.
+   * @param sortBy A number representing the sorting method.
+   */
   public sort = (sortBy: number): void => {
     if (this.sorting === sortBy) {
       this.isSortingReversed = !this.isSortingReversed

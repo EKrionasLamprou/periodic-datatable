@@ -9,7 +9,6 @@ import { ModeService } from 'src/app/services/mode.service'
 import { TemperatureService } from 'src/app/services/temperature.service'
 import { AtomicNumberError } from '../../models/error.model'
 import { ChemicalElementService } from '../../services/chemical-element.service'
-import { ChemicalElementComponentDoc } from './chemical-element.component.doc'
 
 /**
  * Represents a single chemical element tile on the periodic table.
@@ -19,17 +18,14 @@ import { ChemicalElementComponentDoc } from './chemical-element.component.doc'
   templateUrl: './chemical-element.component.html',
   styleUrls: ['./chemical-element.component.sass'],
 })
-export class ChemicalElementComponent
-  extends ElementalComponent implements ChemicalElementComponentDoc {
-  @Input()
-  atomicNumber!: number
+export class ChemicalElementComponent extends ElementalComponent {
   constructor(
     private chemicalElementService: ChemicalElementService,
     private modeService: ModeService,
     private temperatureService: TemperatureService,
-    modalService: ModalService,
     private datatableService: DatatableService,
-    elementSelector: ElementSelector) {
+    elementSelector: ElementSelector,
+    modalService: ModalService) {
     super(elementSelector, modalService)
   }
   ngOnInit() {
@@ -39,6 +35,13 @@ export class ChemicalElementComponent
     }
   }
 
+  @Input()
+  atomicNumber!: number
+
+  /**
+   * Gets the element tile html class, based on the current mode.
+   * @returns A string of the html class name.
+   */
   public getElementTileHtmlClass = (): string => {
     let htmlClass = ''
 
@@ -113,6 +116,9 @@ export class ChemicalElementComponent
     return htmlClass
   }
 
+  /**
+   * Returns true if the datatable is currently open, false otherwise.
+   */
   public isDatatableOpen = (): boolean =>
     this.datatableService.isVisible()
 }

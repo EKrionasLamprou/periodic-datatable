@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 import { ModeService } from 'src/app/services/mode.service'
-import { NavigationBarComponentDoc } from './navigation-bar.component.doc'
 
 /**
  * Represents the navigation bar of the application, with buttons that change the table mode.
@@ -10,13 +9,20 @@ import { NavigationBarComponentDoc } from './navigation-bar.component.doc'
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.sass']
 })
-export class NavigationBarComponent implements NavigationBarComponentDoc {
+export class NavigationBarComponent {
   constructor(private modeService: ModeService) {
   }
 
+  /**
+   * Sets the mode of the periodic table.
+   * @param mode A number that represents a mode.
+   */
   public setMode = (mode: number): void =>
     this.modeService.setMode(mode)
 
+  /**
+   * Gets the html class of each input and determines wheter or not it is selected.
+   */
   public getInputClass = (mode: number): string =>
     this.modeService.getMode() === mode ? 'selected' : ''
 }

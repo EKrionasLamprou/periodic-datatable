@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { DatatableService } from 'src/app/services/datatable.service'
-import { DatatableToogleComponentDoc } from './datatable-toogle.component.doc';
 
 /**
  * Represents a button that shows/hides the datatable.
@@ -10,14 +9,20 @@ import { DatatableToogleComponentDoc } from './datatable-toogle.component.doc';
   templateUrl: './datatable-toogle.component.html',
   styleUrls: ['./datatable-toogle.component.sass']
 })
-export class DatatableToogleComponent implements DatatableToogleComponentDoc {
+export class DatatableToogleComponent {
   constructor(private datatableService: DatatableService) {
   }
 
+  /**
+   * Shows/hides the datatable.
+   */
   public toogle = (): void => {
     this.datatableService.toogle()
   }
 
+  /**
+   * Returns the text of the button.
+   */
   public getButtonText = (): string =>
     this.datatableService.isVisible()
       ? 'Close Datatable'
