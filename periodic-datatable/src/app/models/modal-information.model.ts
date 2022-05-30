@@ -75,11 +75,13 @@ function getElementDetails(element: ChemicalElement): [string, string][] {
         temperature ? `${temperature} K` : '?' // Returns '?' if unknown
 
     details.push(['Atomic Number', element.atomicNumber.toString()])
-    details.push(['Classification', Classification[element.classification]])
-    details.push(['Radioactive', element.isRadioactive ? 'True' : 'False'])
     details.push(['Atomic Mass', `${element.atomicMass} Da`])
+    details.push(['Density', `${element.density} g/cm3`])
+    details.push(['Classification', Classification[element.classification]])
     details.push(['Melting Point', getTemperaturePointOrUnknown(element.meltingPoint)])
     details.push(['Boiling Point', getTemperaturePointOrUnknown(element.boilingPoint)])
+    details.push(['Radioactive', element.isRadioactive ? 'True' : 'False'])
+
     details.push(['Block', element.block.name])
 
     element.group
