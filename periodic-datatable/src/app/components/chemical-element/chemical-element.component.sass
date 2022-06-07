@@ -1,6 +1,8 @@
 @import ../../../styles/colours
 @import ../../../styles/screen-sizes
 
+$font: 'Times New Roman', Times, serif
+
 /* Shows less info on the element tiles. */
 @mixin minimal($min-font-size)
     padding: 60% 0
@@ -19,8 +21,6 @@
     
     .element-name
         visibility: collapse
-
-$font: 'Times New Roman', Times, serif
 
 .element-container
     padding: 0.5%
@@ -56,7 +56,8 @@ $font: 'Times New Roman', Times, serif
         font-size: 0.55vw
 
     &.minimal
-        @include minimal(1vw)
+        @media (min-width: $screen-width-1)
+            @include minimal(1vw)
 
     &.selected
         background: $tile-colour-selected
@@ -139,4 +140,4 @@ $font: 'Times New Roman', Times, serif
 
 @media (max-width: $screen-width-4)
     .element-tile
-        @include minimal(1rem)
+        @include minimal(0.9rem)

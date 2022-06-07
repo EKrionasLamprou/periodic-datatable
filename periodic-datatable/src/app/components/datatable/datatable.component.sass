@@ -1,11 +1,17 @@
 @import ../../../styles/colours
+@import ../../../styles/screen-sizes
 
 .container
     display: flex
     justify-content: flex-end
     margin-left: 3%
     height: 45rem
-    overflow-y: scroll
+    overflow: scroll
+
+    @media (max-width: $screen-width-1)
+        justify-content: center
+        margin-left: 0
+        margin-top: 3%
 
 table
     position: relative
